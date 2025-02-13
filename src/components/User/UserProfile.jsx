@@ -1,0 +1,1 @@
+// bento para distribuir vistas de las opciones disponibles para el usuario

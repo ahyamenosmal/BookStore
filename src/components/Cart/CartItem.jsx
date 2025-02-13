@@ -1,0 +1,1 @@
+//CartItem → Tarjeta individual dentro del carrito.
