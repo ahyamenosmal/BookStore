@@ -1,0 +1,61 @@
+{
+    "categorias": [
+      { "id": 1, "nombre": "Ficción" },
+      { "id": 2, "nombre": "No Ficción" },
+      { "id": 3, "nombre": "Ciencia Ficción" },
+      { "id": 4, "nombre": "Fantasía" },
+      { "id": 5, "nombre": "Historia" }
+    ],
+    "productos": [
+      {
+        "id": 1,
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "descripcion": "Una novela distópica que explora el totalitarismo y la vigilancia masiva.",
+        "precio": 15.99,
+        "stock": 20,
+        "categoriaId": 1,
+        "imagen": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 2,
+        "titulo": "Sapiens: De animales a dioses",
+        "autor": "Yuval Noah Harari",
+        "descripcion": "Un recorrido por la historia de la humanidad desde la prehistoria hasta la actualidad.",
+        "precio": 22.50,
+        "stock": 18,
+        "categoriaId": 2,
+        "imagen": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 3,
+        "titulo": "Dune",
+        "autor": "Frank Herbert",
+        "descripcion": "Un clásico de la ciencia ficción que narra la lucha por el control del planeta Arrakis.",
+        "precio": 19.99,
+        "stock": 12,
+        "categoriaId": 3,
+        "imagen": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 4,
+        "titulo": "El Señor de los Anillos",
+        "autor": "J.R.R. Tolkien",
+        "descripcion": "Una épica historia de fantasía sobre la lucha contra el Señor Oscuro Sauron.",
+        "precio": 35.00,
+        "stock": 10,
+        "categoriaId": 4,
+        "imagen": "https://via.placeholder.com/150"
+      },
+      {
+        "id": 5,
+        "titulo": "Historia del siglo XX",
+        "autor": "Eric Hobsbawm",
+        "descripcion": "Un análisis detallado de los eventos y cambios del siglo XX.",
+        "precio": 27.99,
+        "stock": 15,
+        "categoriaId": 5,
+        "imagen": "https://via.placeholder.com/150"
+      }
+    ]
+  }
