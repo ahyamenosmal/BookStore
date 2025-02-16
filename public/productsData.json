@@ -12,7 +12,7 @@
         "titulo": "1984",
         "autor": "George Orwell",
         "descripcion": "Una novela distópica que explora el totalitarismo y la vigilancia masiva.",
-        "precio": 15.99,
+        "precio": 15990,
         "stock": 20,
         "categoriaId": 1,
         "imagen": "https://placehold.co/150x220/png"
@@ -22,7 +22,7 @@
         "titulo": "Sapiens: De animales a dioses",
         "autor": "Yuval Noah Harari",
         "descripcion": "Un recorrido por la historia de la humanidad desde la prehistoria hasta la actualidad.",
-        "precio": 22.50,
+        "precio": 22500,
         "stock": 18,
         "categoriaId": 2,
         "imagen": "https://placehold.co/150x220/png"
@@ -32,7 +32,7 @@
         "titulo": "Dune",
         "autor": "Frank Herbert",
         "descripcion": "Un clásico de la ciencia ficción que narra la lucha por el control del planeta Arrakis.",
-        "precio": 19.99,
+        "precio": 19990,
         "stock": 12,
         "categoriaId": 3,
         "imagen": "https://placehold.co/150x220/png"
@@ -42,7 +42,7 @@
         "titulo": "El Señor de los Anillos",
         "autor": "J.R.R. Tolkien",
         "descripcion": "Una épica historia de fantasía sobre la lucha contra el Señor Oscuro Sauron.",
-        "precio": 35.00,
+        "precio": 35000,
         "stock": 10,
         "categoriaId": 4,
         "imagen": "https://placehold.co/150x220/png"
@@ -52,7 +52,7 @@
         "titulo": "Historia del siglo XX",
         "autor": "Eric Hobsbawm",
         "descripcion": "Un análisis detallado de los eventos y cambios del siglo XX.",
-        "precio": 27.99,
+        "precio": 26990,
         "stock": 15,
         "categoriaId": 5,
         "imagen": "https://placehold.co/150x220/png"
