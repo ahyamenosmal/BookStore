@@ -15,7 +15,7 @@
         "precio": 15.99,
         "stock": 20,
         "categoriaId": 1,
-        "imagen": "https://via.placeholder.com/150"
+        "imagen": "https://placehold.co/150x220/png"
       },
       {
         "id": 2,
@@ -25,7 +25,7 @@
         "precio": 22.50,
         "stock": 18,
         "categoriaId": 2,
-        "imagen": "https://via.placeholder.com/150"
+        "imagen": "https://placehold.co/150x220/png"
       },
       {
         "id": 3,
@@ -35,7 +35,7 @@
         "precio": 19.99,
         "stock": 12,
         "categoriaId": 3,
-        "imagen": "https://via.placeholder.com/150"
+        "imagen": "https://placehold.co/150x220/png"
       },
       {
         "id": 4,
@@ -45,7 +45,7 @@
         "precio": 35.00,
         "stock": 10,
         "categoriaId": 4,
-        "imagen": "https://via.placeholder.com/150"
+        "imagen": "https://placehold.co/150x220/png"
       },
       {
         "id": 5,
@@ -55,7 +55,7 @@
         "precio": 27.99,
         "stock": 15,
         "categoriaId": 5,
-        "imagen": "https://via.placeholder.com/150"
+        "imagen": "https://placehold.co/150x220/png"
       }
     ]
   }
