@@ -9,8 +9,8 @@ function Navbar() {
   const { cart } = useCart();
 
   return (
-    <nav class="bg-red-400 h-20 p-1  mx-32 rounded-lg border-blue-400 border-0 border-b-2 border-solid">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
+    <nav class="bg-red-400 h-20 py-1  mx-32 rounded-lg border-blue-400 border-0 border-b-2 border-solid">
+      <div class="max-w-screen flex flex-wrap items-center  justify-between  mx-5">
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="src\assets\Scripta.svg" class="w-60" alt="Scripta Logo" />
         </a>
@@ -38,12 +38,14 @@ function Navbar() {
             />
           </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  ">
+        <div className="hidden w-full md:block md:w-auto " id="navbar-default">
+          <ul className="text-lg font-semibold flex flex-col justify-end p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  ">
             <li>
               <NavLink
                 to="/"
-                class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
+               md:hover:bg-transparent md:border-0 md:hover:text-sky-900 
+               md:p-0 "
                 aria-current="page"
               >
                 Home
@@ -52,19 +54,21 @@ function Navbar() {
             <li>
               <NavLink
                 to="/catalog"
-                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
+               md:hover:bg-transparent md:border-0 md:hover:text-sky-900 
+               md:p-0  "
               >
                 {" "}
-                Catálogo {" "}
+                Catálogo{" "}
               </NavLink>
             </li>
             <li className="relative">
               <NavLink
                 to="/cart"
                 className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
-               md:hover:bg-transparent md:border-0 md:hover:text-blue-700 
-               md:p-0 dark:text-white md:dark:hover:text-blue-500 
-               dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+               md:hover:bg-transparent md:border-0 md:hover:text-sky-900 
+               md:p-0  
+               "
               >
                 <ShoppingBasket />
                 {cart.length > 0 && (
@@ -79,15 +83,20 @@ function Navbar() {
               {user ? (
                 <NavLink
                   to="/profile"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
+               md:hover:bg-transparent md:border-0 md:hover:text-sky-900 
+               md:p-0  "
                 >
                   Perfil
                 </NavLink>
               ) : (
                 <NavLink
                   to="/login"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
+                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
+               md:hover:bg-transparent md:border-0 md:hover:text-sky-900 
+               md:p-0  
+               "
+              >
                   Registro/Inicio de sesión
                 </NavLink>
               )}
@@ -95,7 +104,10 @@ function Navbar() {
             <li>
               <NavLink
                 to="#"
-                class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
+               md:hover:bg-transparent md:border-0 md:hover:text-sky-900 
+               md:p-0  
+               "
               >
                 Sobre nosotros
               </NavLink>

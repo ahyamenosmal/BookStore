@@ -25,7 +25,7 @@ const categoriaSeleccionadaId = categorias.find(
 
   return (
     <>
-      <header className="h-32"></header>
+      <header className="h-10"></header>
       <Navbar />
       <div className="flex flex-row ">
         <div>

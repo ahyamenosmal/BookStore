@@ -1,8 +1,7 @@
 # To Do
 
 - terminar el profile
-- hacer el carrito
+- revisar botones carrito
 - mantener una sesión ciclo de vida
 - vista detalle producto
-- modificar el footer
 - admin panel

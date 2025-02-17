@@ -6,13 +6,16 @@ import { BrowserRouter } from "react-router-dom";
 import { APIProvider } from "../src/contexts/APIContext.jsx";
 import { AuthProvider } from "../src/contexts/AuthContext.jsx";
 import { CartProvider } from "../src/contexts/CartContext.jsx";
+import { BlogProvider } from "../src/contexts/BlogContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider>
       <APIProvider>
         <CartProvider>
-          <App />
+          <BlogProvider>
+            <App />
+          </BlogProvider>
         </CartProvider>
       </APIProvider>
     </AuthProvider>
