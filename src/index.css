@@ -13,3 +13,15 @@ body {
     
 }
 
+.sidebar {
+    background-image: url("src/assets/sidebar_bg.svg");
+    background-repeat: no-repeat; 
+    background-size: cover;
+    
+
+}
+.sidebar-top {
+    background-image: url("src/assets/sidebar_bg_top.svg");
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}

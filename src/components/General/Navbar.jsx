@@ -1,7 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext.jsx'
 
 function Navbar() {
+const { user } = useAuth()
+
   return (
 
 <nav class="bg-red-400 h-20 p-1  mx-32 rounded-lg border-blue-400 border-0 border-b-2 border-solid">
@@ -28,8 +31,22 @@ function Navbar() {
           <NavLink to="/cart" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Carrito</NavLink>
         </li>
         <li>
-          <NavLink to="/login" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Registro/Inicio de sesión</NavLink>
-        </li>
+      {user ? (
+        <NavLink
+          to="/profile"
+          className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+        >
+          Perfil
+        </NavLink>
+      ) : (
+        <NavLink
+          to="/login"
+          className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+        >
+          Registro/Inicio de sesión
+        </NavLink>
+      )}
+    </li>
         <li>
           <NavLink to="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</NavLink>
         </li>

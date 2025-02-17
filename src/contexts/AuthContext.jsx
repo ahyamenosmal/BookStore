@@ -6,6 +6,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/userData.json")
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = (email, password) => {
     const foundUser = users.find((u) => u.email === email && u.password === password);
-    const navigate = useNavigate(); // Hook para redirigir
+
   
     if (foundUser) {
       setUser(foundUser);

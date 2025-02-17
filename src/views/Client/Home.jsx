@@ -3,13 +3,13 @@ import Footer from "../../components/General/Footer.jsx";
 import Banner from "../../components/General/Banner.jsx";
 import Navbar from "../../components/General/Navbar.jsx";
 import PaginatedProducts from "../../components/General/PaginatedProdutcs.jsx";
-import { useProducts } from "../../contexts/APIContext";
-import { use } from "react";
+import { useAPI } from "../../contexts/APIContext";
+
 
 const Home = () => {
-  const { data } = useProducts();
+  const { productos } = useAPI();
   
-console.log("a", data);
+console.log("a", productos);
 
   return (
     <>
@@ -22,7 +22,7 @@ console.log("a", data);
             <h1 className="text-star text-5xl font-lathusca m-5 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
               Best Sellers del momento
             </h1>
-            <PaginatedProducts products={data.productos} productsPerPage={3} />
+            <PaginatedProducts products={productos} productsPerPage={3} />
             
           </div>
 
@@ -31,7 +31,7 @@ console.log("a", data);
             <h1 className="text-star text-5xl font-lathusca m-5 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
               Autores en profundidad
             </h1>
-            <PaginatedProducts products={data.productos} productsPerPage={2} />
+            <PaginatedProducts products={productos} productsPerPage={2} />
           </div>
         </div>
       </div>

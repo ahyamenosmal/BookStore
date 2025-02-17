@@ -3,24 +3,30 @@ import { createContext, useContext, useState, useEffect } from "react";
 const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
-  const [data, setData] = useState({ categorias: [], productos: [] });
+  const [categorias, setCategorias] = useState([]);
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
     fetch("/productsData.json")
       .then((response) => response.json())
-      .then((jsonData) => setData(jsonData))
+      .then((jsonData) => {
+        if (jsonData.categorias && jsonData.productos) {
+          setCategorias(jsonData.categorias);
+          setProductos(jsonData.productos);
+        } else {
+          console.error("El JSON no tiene la estructura esperada");
+        }
+      })
       .catch((error) => console.error("Error al obtener los datos:", error));
   }, []);
 
-  console.log("Datos cargados:", data); // Log fuera del return
-
   return (
-    <APIContext.Provider value={{ data, setData }}>
+    <APIContext.Provider value={{ categorias, productos }}>
       {children}
     </APIContext.Provider>
   );
 };
 
-export const useProducts = () => {
-  return useContext(APIContext);
-};
+// Hook para acceder a categorías y productos
+export const useAPI = () => useContext(APIContext);
+
