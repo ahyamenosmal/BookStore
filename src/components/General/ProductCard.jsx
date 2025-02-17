@@ -1,7 +1,11 @@
 import React from "react";
+import { useCart } from "../../contexts/CartContext";
+import { use } from "react";
 
 const ProductCard = ({ producto }) => {
+  const { addToCart } = useCart();
   if (!producto) return null;
+  console.log(useCart());
 
   return (
     <div className="mt-44 mb-4 p-2 items-center grid grid-cols-2 relative w-full min-w-96 max-w-96 h-36 bg-red-400/25 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 border-0 border-b-2 border-solid">
@@ -32,7 +36,8 @@ const ProductCard = ({ producto }) => {
         <a
           href="#"
           className="text-white bg-sky-900 hover:bg-sky-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          onClick={() => addToCart(producto)}
+       >
           Add to cart
         </a>
       </div>

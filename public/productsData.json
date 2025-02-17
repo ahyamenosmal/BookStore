@@ -56,6 +56,106 @@
         "stock": 15,
         "categoriaId": 5,
         "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 6,
+        "titulo": "Un mundo feliz",
+        "autor": "Aldous Huxley",
+        "descripcion": "Una novela distópica sobre una sociedad aparentemente perfecta donde la libertad ha sido sacrificada por la estabilidad.",
+        "precio": 16990,
+        "stock": 15,
+        "categoriaId": 1,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 7,
+        "titulo": "Crónica de una muerte anunciada",
+        "autor": "Gabriel García Márquez",
+        "descripcion": "Una obra que reconstruye un asesinato anunciado por todos en el pueblo.",
+        "precio": 12990,
+        "stock": 25,
+        "categoriaId": 1,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 8,
+        "titulo": "Breve historia del tiempo",
+        "autor": "Stephen Hawking",
+        "descripcion": "Explicación accesible sobre el universo, los agujeros negros y la teoría del Big Bang.",
+        "precio": 18990,
+        "stock": 18,
+        "categoriaId": 2,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 9,
+        "titulo": "El origen de las especies",
+        "autor": "Charles Darwin",
+        "descripcion": "La teoría de la evolución explicada en detalle por su creador.",
+        "precio": 22990,
+        "stock": 12,
+        "categoriaId": 2,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 10,
+        "titulo": "Fundación",
+        "autor": "Isaac Asimov",
+        "descripcion": "El inicio de una de las sagas más influyentes de la ciencia ficción.",
+        "precio": 17990,
+        "stock": 20,
+        "categoriaId": 3,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 11,
+        "titulo": "Neuromante",
+        "autor": "William Gibson",
+        "descripcion": "El libro que definió el género cyberpunk y la estética de la tecnología del futuro.",
+        "precio": 15990,
+        "stock": 14,
+        "categoriaId": 3,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 12,
+        "titulo": "El Hobbit",
+        "autor": "J.R.R. Tolkien",
+        "descripcion": "La historia de Bilbo Bolsón y su viaje inesperado que lo lleva a enfrentarse con dragones y tesoros perdidos.",
+        "precio": 19990,
+        "stock": 22,
+        "categoriaId": 4,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 13,
+        "titulo": "Las crónicas de Narnia: El león, la bruja y el ropero",
+        "autor": "C.S. Lewis",
+        "descripcion": "Un clásico de la literatura fantástica que transporta a los lectores al mágico mundo de Narnia.",
+        "precio": 14990,
+        "stock": 30,
+        "categoriaId": 4,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 14,
+        "titulo": "Los mitos de la historia de Chile",
+        "autor": "Sergio Villalobos",
+        "descripcion": "Análisis de las ideas equivocadas sobre la historia chilena y sus orígenes.",
+        "precio": 13990,
+        "stock": 10,
+        "categoriaId": 5,
+        "imagen": "https://placehold.co/150x220/png"
+      },
+      {
+        "id": 15,
+        "titulo": "La historia secreta de Chile",
+        "autor": "Jorge Baradit",
+        "descripcion": "Relatos poco conocidos de la historia de Chile contados de manera apasionante.",
+        "precio": 16990,
+        "stock": 16,
+        "categoriaId": 5,
+        "imagen": "https://placehold.co/150x220/png"
       }
     ]
   }

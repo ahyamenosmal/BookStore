@@ -29,4 +29,3 @@ export const APIProvider = ({ children }) => {
 
 // Hook para acceder a categorías y productos
 export const useAPI = () => useContext(APIContext);
-

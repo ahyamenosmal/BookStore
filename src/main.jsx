@@ -8,13 +8,13 @@ import { AuthProvider } from "../src/contexts/AuthContext.jsx";
 import { CartProvider } from "../src/contexts/CartContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-        <BrowserRouter>
-  <AuthProvider>
-    <APIProvider>
-      <CartProvider>
+  <BrowserRouter>
+    <AuthProvider>
+      <APIProvider>
+        <CartProvider>
           <App />
-      </CartProvider>
-    </APIProvider>
-  </AuthProvider>
-        </BrowserRouter>
+        </CartProvider>
+      </APIProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );

@@ -8,8 +8,7 @@ import { useAPI } from "../../contexts/APIContext";
 
 const Home = () => {
   const { productos } = useAPI();
-  
-console.log("a", productos);
+ 
 
   return (
     <>

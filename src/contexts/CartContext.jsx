@@ -1,23 +1,47 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
-// Proveedor del contexto
-export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]); 
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
 
-  // Agregar un producto al carrito
+  // Cargar carrito desde localStorage al iniciar
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []);
+
+  // Guardar carrito en localStorage cuando cambie
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+
+      if (existingProduct) {
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
+        );
+      } else {
+        return [...prevCart, { ...product, cantidad: 1 }];
+      }
+    });
   };
 
-  // Remover un producto del carrito
   const removeFromCart = (productId) => {
-    setCart(cart.filter((item) => item.id !== productId));
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === productId ? { ...item, cantidad: item.cantidad - 1 } : item
+        )
+        .filter((item) => item.cantidad > 0)
+    );
   };
 
-  // Vaciar el carrito
   const clearCart = () => {
     setCart([]);
   };
@@ -27,9 +51,6 @@ export function CartProvider({ children }) {
       {children}
     </CartContext.Provider>
   );
-}
+};
 
-// Hook personalizado para usar el contexto del carrito
-export function useCart() {
-  return useContext(CartContext);
-}
+export const useCart = () => useContext(CartContext);
