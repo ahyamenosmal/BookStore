@@ -1,3 +1,6 @@
+<<<<<<< Updated upstream
+// bento para distribuir vistas de las opciones disponibles para el usuario
+=======
 import React, { useState } from "react";
 import Navbar from "../../components/General/Navbar.jsx";
 import PersonalDataForm from "./PersonalDataForm.jsx";
@@ -11,11 +14,14 @@ import { motion } from "framer-motion";
 
 const UserProfile = () => {
   const [activeSection, setActiveSection] = useState("datos");
+  const commonClasses =
+    "relative z-40 w-40 h-12 flex items-center text-xl justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500";
+  const activeClasses = "bg-yellow-400 text-sky-900 border-sky-900";
+  const inactiveClasses = "bg-sky-900 text-yellow-400 border-amber-500";
 
   return (
     <>
       <Navbar /> {/* 🔹 Agregado el Navbar para mantener la navegación */}
-
       <div className="flex min-h-screen bg-[#f9f0df]">
         {/* Sidebar con la estética de bookstore */}
         <div className="fixed w-40 left-0 top-1/4 flex flex-col items-center">
@@ -33,8 +39,8 @@ const UserProfile = () => {
           {/* Menú lateral 📚 */}
           <div className="categories-wrapper flex flex-col space-y-8 mt-32">
             <motion.div
-              className={`relative z-40 w-40 h-12 bg-sky-900 text-yellow-400 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500 ${
-                activeSection === "datos" ? "bg-yellow-400 text-sky-900" : ""
+              className={`${commonClasses} ${
+                activeSection === "datos" ? activeClasses : inactiveClasses
               }`}
               onClick={() => setActiveSection("datos")}
               initial={{ x: 50 }}
@@ -45,8 +51,8 @@ const UserProfile = () => {
             </motion.div>
 
             <motion.div
-              className={`relative z-40 w-40 h-12 bg-sky-900 text-yellow-400 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500 ${
-                activeSection === "compras" ? "bg-yellow-400 text-sky-900" : ""
+              className={`${commonClasses} ${
+                activeSection === "compras" ? activeClasses : inactiveClasses
               }`}
               onClick={() => setActiveSection("compras")}
               initial={{ x: 50 }}
@@ -57,8 +63,8 @@ const UserProfile = () => {
             </motion.div>
 
             <motion.div
-              className={`relative z-40 w-40 h-12 bg-sky-900 text-yellow-400 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500 ${
-                activeSection === "ventas" ? "bg-yellow-400 text-sky-900" : ""
+              className={`${commonClasses} ${
+                activeSection === "ventas" ? activeClasses : inactiveClasses
               }`}
               onClick={() => setActiveSection("ventas")}
               initial={{ x: 50 }}
@@ -69,8 +75,8 @@ const UserProfile = () => {
             </motion.div>
 
             <motion.div
-              className={`relative z-40 w-40 h-12 bg-sky-900 text-yellow-400 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500 ${
-                activeSection === "favoritos" ? "bg-yellow-400 text-sky-900" : ""
+              className={`${commonClasses} ${
+                activeSection === "favoritos" ? activeClasses : inactiveClasses
               }`}
               onClick={() => setActiveSection("favoritos")}
               initial={{ x: 50 }}
@@ -81,8 +87,8 @@ const UserProfile = () => {
             </motion.div>
 
             <motion.div
-              className={`relative z-40 w-40 h-12 bg-sky-900 text-yellow-400 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500 ${
-                activeSection === "historial" ? "bg-yellow-400 text-sky-900" : ""
+              className={`${commonClasses} ${
+                activeSection === "historial" ? activeClasses : inactiveClasses
               }`}
               onClick={() => setActiveSection("historial")}
               initial={{ x: 50 }}
@@ -108,3 +114,4 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+>>>>>>> Stashed changes
