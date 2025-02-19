@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useAPI } from "../../contexts/APIContext";
 import SidebarBg from "../../assets/sidebar_bg.svg";
 import SidebarBgTop from "../../assets/sidebar_bg_top.svg";
 
-function Sidebar({ setCategoriaSeleccionada }) { // Recibimos setCategoriaSeleccionada como prop
+function Sidebar({ setCategoriaSeleccionada, categoriaSeleccionada}) {
   const { categorias } = useAPI();
-
-  console.log("setCategoriaSeleccionada en Sidebar:", setCategoriaSeleccionada); // Debugging
+  
 
   return (
     <div className="fixed w-40 left-0 top-1/4 flex flex-col items-center">
@@ -20,7 +20,11 @@ function Sidebar({ setCategoriaSeleccionada }) { // Recibimos setCategoriaSelecc
       <div className="categories-wrapper flex flex-col space-y-8 mt-8">
         {/* Botón para mostrar todas las categorías */}
         <motion.div
-          className="relative z-40 w-40 h-12 mt-32 bg-sky-900 text-yellow-400 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500"
+            className={`relative z-40 w-40 h-12 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double  ${
+              categoriaSeleccionada === null
+                ? "bg-yellow-400 text-sky-900 border-sky-900"
+                : "bg-sky-900 text-yellow-400 border-amber-500"
+            }`} 
           initial={{ x: 50 }}
           whileHover={{ x: 70 }}
           transition={{ type: "spring", stiffness: 200 }}
@@ -34,7 +38,7 @@ function Sidebar({ setCategoriaSeleccionada }) { // Recibimos setCategoriaSelecc
           <motion.div
             key={index}
             className={`relative z-40 w-40 h-12 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double  ${
-              activeSection === categoria.nombre
+              categoriaSeleccionada === categoria.nombre
                 ? "bg-yellow-400 text-sky-900 border-sky-900"
                 : "bg-sky-900 text-yellow-400 border-amber-500"
             }`} 

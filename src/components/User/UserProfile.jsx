@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-// bento para distribuir vistas de las opciones disponibles para el usuario
-=======
 import React, { useState } from "react";
 import Navbar from "../../components/General/Navbar.jsx";
 import PersonalDataForm from "./PersonalDataForm.jsx";
@@ -114,4 +111,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
->>>>>>> Stashed changes

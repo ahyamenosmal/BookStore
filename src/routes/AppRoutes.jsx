@@ -5,14 +5,8 @@ import Home from '../views/Client/Home.jsx'
 import Catalog from '../views/Client/Catalog.jsx'
 import Cart from '../views/Client/Cart.jsx'
 import Login from '../views/Client/Login.jsx'
-<<<<<<< Updated upstream
-
-=======
 import UserProfile from "../components/User/UserProfile.jsx";
 import AdminDashboard from '../components/Admin/AdminDashboard.jsx'
->>>>>>> Stashed changes
-import UserProfile from "../components/User/UserProfile.jsx";
-
 
 
 function AppRoutes() {
@@ -22,14 +16,8 @@ function AppRoutes() {
       <Route path='/catalog' element={<Catalog />} />
       <Route path='/cart' element={<Cart />} />
       <Route path='/login' element={<Login />} />
-<<<<<<< Updated upstream
-=======
       <Route path='/profile' element={<UserProfile />} />
-      <Route path='/admin' element={<AdminDashboard />} />
->>>>>>> Stashed changes
-      
-
-      
+      <Route path='/admin' element={<AdminDashboard />} />     
     </Routes>
   )
 }
