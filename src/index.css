@@ -1,6 +1,8 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
 @font-face {
     font-family: "awesome lathusca";
     src: url("/fonts/Awesome Lathusca.ttf");

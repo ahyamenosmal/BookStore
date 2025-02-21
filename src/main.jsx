@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
+import App from "./App";
+import './index.css';
 import { BrowserRouter } from "react-router-dom";
-import { APIProvider } from "../src/contexts/APIContext.jsx";
+import { APIProvider } from "./contexts/APIContext";
 import { AuthProvider } from "./contexts/AuthContext";
-import { CartProvider } from "../src/contexts/CartContext.jsx";
-import { BlogProvider } from "../src/contexts/BlogContext.jsx";
+import { CartProvider } from "./contexts/CartContext";
+import { BlogProvider } from "./contexts/BlogContext";
+import { FavoritesProvider } from "./contexts/FavoritesContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <APIProvider>
         <CartProvider>
           <BlogProvider>
-            <App />
+            <FavoritesProvider>
+              <App />
+            </FavoritesProvider>
           </BlogProvider>
         </CartProvider>
       </APIProvider>
