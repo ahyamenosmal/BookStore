@@ -8,7 +8,7 @@ const PaginatedProducts = ({ products, productsPerPage = 3 }) => {
     setCurrentIndex(0);
   }, [products]);
 
-  console.log("Productos en PaginatedProducts:", products); // <-- Agregar para depuración
+  console.log("📌 Productos en PaginatedProducts:", products);
 
   if (!products || products.length === 0) {
     return (
@@ -34,7 +34,7 @@ const PaginatedProducts = ({ products, productsPerPage = 3 }) => {
         {products
           .slice(currentIndex, currentIndex + productsPerPage)
           .map((producto) => (
-            <ProductCard key={producto.id} producto={producto} />
+            <ProductCard key={producto.id_producto} producto={producto} />
           ))}
       </div>
 

@@ -8,21 +8,23 @@ import { useAPI } from "../../contexts/APIContext";
 
 function Catalog() {
   const { productos, categorias } = useAPI();
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
 
+  // ✅ Corrección: Obtener `id_categoria` en lugar de `id`
   const categoriaSeleccionadaId = categorias.find(
     (cat) => cat.nombre === categoriaSeleccionada
-  )?.id;
+  )?.id_categoria; 
 
-  const productosFiltrados = categoriaSeleccionada
+  // ✅ Corrección: Asegurar que `categoriaId` en productos coincida con `id_categoria` en la base de datos
+  const productosFiltrados = categoriaSeleccionadaId
     ? productos.filter(
-        (producto) => producto.categoriaId === categoriaSeleccionadaId
+        (producto) => producto.id_categoria === categoriaSeleccionadaId
       )
     : productos;
 
-  console.log("Categoría seleccionada:", categoriaSeleccionada);
-  console.log("ID de la categoría seleccionada:", categoriaSeleccionadaId);
-  console.log("Productos filtrados:", productosFiltrados);
+  console.log("📌 Categoría seleccionada:", categoriaSeleccionada);
+  console.log("📌 ID de la categoría seleccionada:", categoriaSeleccionadaId);
+  console.log("📌 Productos filtrados:", productosFiltrados);
 
   return (
     <>
@@ -37,7 +39,7 @@ function Catalog() {
           <div className="row">
             <div className="flex-row justify-items-center col-md-12">
               <h1 className="text-star text-5xl font-lathusca m-5 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
-                Nuestro catalogo
+                Nuestro catálogo
               </h1>
 
               <motion.div
@@ -46,22 +48,7 @@ function Catalog() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <PaginatedProducts
-                  products={productosFiltrados}
-                  productsPerPage={9}
-                  renderProduct={(product, index) => (
-                    <motion.div
-                      key={product.id}
-                      className="shadow-md rounded-lg overflow-hidden"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.1, duration: 0.3 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {product}
-                    </motion.div>
-                  )}
-                />
+                <PaginatedProducts products={productosFiltrados} productsPerPage={9} />
               </motion.div>
             </div>
           </div>
