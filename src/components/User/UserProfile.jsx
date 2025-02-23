@@ -13,12 +13,16 @@ import Footer from "../../components/General/Footer.jsx";
 
 const UserProfile = () => {
   const [activeSection, setActiveSection] = useState("datos");
+  const commonClasses =
+    "relative z-40 w-40 h-12 flex items-center text-xl justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double border-amber-500";
+  const activeClasses = "bg-yellow-400 text-sky-900 border-sky-900";
+  const inactiveClasses = "bg-sky-900 text-yellow-400 border-amber-500";
 
   return (
     <>
+
     <header className="h-10"></header>
       <Navbar />
-
       <div className="flex min-h-screen bg-[#f9f0df]">
         <div className="fixed w-40 left-0 top-1/4 flex flex-col items-center">
           <img
@@ -76,45 +80,90 @@ const UserProfile = () => {
         >
           {activeSection === "datos" && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+
+              className={`${commonClasses} ${
+                activeSection === "datos" ? activeClasses : inactiveClasses
+              }`}
+              onClick={() => setActiveSection("datos")}
+              initial={{ x: 50 }}
+              whileHover={{ x: 70 }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
               <PersonalDataForm />
             </motion.div>
           )}
           {activeSection === "compras" && (
             <motion.div
+
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
+
+              className={`${commonClasses} ${
+                activeSection === "compras" ? activeClasses : inactiveClasses
+              }`}
+              onClick={() => setActiveSection("compras")}
+              initial={{ x: 50 }}
+              whileHover={{ x: 70 }}
+              transition={{ type: "spring", stiffness: 200 }}
+
             >
               <OrderHistory />
             </motion.div>
           )}
           {activeSection === "ventas" && (
             <motion.div
+
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
+
+              className={`${commonClasses} ${
+                activeSection === "ventas" ? activeClasses : inactiveClasses
+              }`}
+              onClick={() => setActiveSection("ventas")}
+              initial={{ x: 50 }}
+              whileHover={{ x: 70 }}
+              transition={{ type: "spring", stiffness: 200 }}
+
             >
               <SalesHistory />
             </motion.div>
           )}
           {activeSection === "favoritos" && (
             <motion.div
+
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
+
+              className={`${commonClasses} ${
+                activeSection === "favoritos" ? activeClasses : inactiveClasses
+              }`}
+              onClick={() => setActiveSection("favoritos")}
+              initial={{ x: 50 }}
+              whileHover={{ x: 70 }}
+              transition={{ type: "spring", stiffness: 200 }}
+
             >
               <Favorites />
             </motion.div>
           )}
           {activeSection === "historial" && (
             <motion.div
+
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
+
+              className={`${commonClasses} ${
+                activeSection === "historial" ? activeClasses : inactiveClasses
+              }`}
+              onClick={() => setActiveSection("historial")}
+              initial={{ x: 50 }}
+              whileHover={{ x: 70 }}
+              transition={{ type: "spring", stiffness: 200 }}
+
             >
               <UserActivity />
             </motion.div>

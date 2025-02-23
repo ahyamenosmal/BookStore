@@ -10,6 +10,7 @@ function Catalog() {
   const { productos, categorias } = useAPI();
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
 
+
   const categoriaSeleccionadaId = categorias.find(
     (cat) => cat.nombre === categoriaSeleccionada
   )?.id;
@@ -30,7 +31,12 @@ function Catalog() {
       <Navbar />
       <div className="flex flex-row">
         <div>
-          <Sidebar setCategoriaSeleccionada={setCategoriaSeleccionada} />
+
+          <Sidebar
+            setCategoriaSeleccionada={setCategoriaSeleccionada}
+            categoriaSeleccionada={categoriaSeleccionada}
+          />
+
         </div>
 
         <div className="container mx-auto">

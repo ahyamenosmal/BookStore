@@ -6,19 +6,22 @@ import Catalog from "../views/Client/Catalog.jsx";
 import Cart from "../views/Client/Cart.jsx";
 import Login from "../views/Client/Login.jsx";
 import UserProfile from "../components/User/UserProfile.jsx";
-import Product from "../views/Client/Product.jsx"; // 
+import Product from "../views/Client/Product.jsx"; 
+import AdminDashboard from '../components/Admin/AdminDashboard.jsx'
 
 
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/catalog" element={<Catalog />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/profile" element={<UserProfile />} />
+      
+      <Route path='/' element={<Home />} />
+      <Route path='/catalog' element={<Catalog />} />
+      <Route path='/cart' element={<Cart />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/profile' element={<UserProfile />} />
       <Route path="/product/:id" element={<Product />} /> 
+      <Route path='/admin' element={<AdminDashboard />} />     
 
     </Routes>
   );
