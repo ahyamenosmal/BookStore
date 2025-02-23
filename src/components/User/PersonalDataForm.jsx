@@ -23,7 +23,7 @@ const PersonalDataForm = () => {
   };
 
   return (
-    <div className="bg-red-400/25 p-6 rounded-lg shadow-lg max-w-xl mx-auto">
+    <div className="bg-red-400/25 p-6 rounded-lg shadow-lg ">
       <h2 className="text-4xl font-lathusca text-black mb-8 border-b-4 border-red-400 w-fit">
         Mis Datos
       </h2>
@@ -39,7 +39,7 @@ const PersonalDataForm = () => {
             value={formData.name}
             onChange={handleChange}
             disabled={!isEditing}
-            className={`p-2 border ${
+            className={`p-2 border w-96 ${
               isEditing ? "border-blue-500" : "border-gray-300"
             } rounded-lg bg-gray-100 text-gray-900`}
           />
