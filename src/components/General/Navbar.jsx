@@ -3,17 +3,18 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useCart } from "../../contexts/CartContext.jsx";
 import { ShoppingBasket } from "lucide-react";
+import ScriptaLogo from "../../assets/Scripta.svg";
 
 function Navbar() {
   const { user } = useAuth();
   const { cart } = useCart();
 
   return (
-    <nav className="bg-red-400 h-20 py-1 mx-32 rounded-lg border-blue-400 border-0 border-b-2 border-solid">
+    <nav className=" bg-red-400 h-20 py-1 mx-32 rounded-lg border-blue-400 border-0 border-b-2 border-solid">
       <div className="max-w-screen flex flex-wrap items-center justify-between mx-5">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src="src\assets\Scripta.svg"
+            src={ScriptaLogo}
             className="w-60"
             alt="Scripta Logo"
           />

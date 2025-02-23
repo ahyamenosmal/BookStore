@@ -46,10 +46,11 @@ export const AuthProvider = ({ children }) => {
       return false;
     }
   };
-
+// cierra sesión
   const logout = () => {
     setUser(null);
     localStorage.removeItem("user");
+    navigate("/");
   };
 
   // 🔹 Nueva función para actualizar los datos del usuario

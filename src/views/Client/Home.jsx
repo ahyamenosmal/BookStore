@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "../../components/General/Footer.jsx";
+
 import Banner from "../../components/General/Banner.jsx";
-import Navbar from "../../components/General/Navbar.jsx";
+import Layout from "../../components/General/Layout.jsx";
 import PaginatedProducts from "../../components/General/PaginatedProdutcs.jsx";
 import { useAPI } from "../../contexts/APIContext";
 import { useBlog } from "../../contexts/BlogContext"; 
@@ -17,7 +17,8 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <Navbar />
+      <Layout>
+
       <div className="container mx-auto">
         <div className="row">
           {/* 🔹 Sección Best Sellers */}
@@ -73,7 +74,8 @@ const Home = () => {
               </AnimatedSection>
         </div>
       </div>
-      <Footer />
+      
+              </Layout>
     </>
   );
 };
