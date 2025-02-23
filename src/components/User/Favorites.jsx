@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useFavorites } from "../../contexts/FavoritesContext";
 import { useCart } from "../../contexts/CartContext";
-import { useAPI } from "../../contexts/APIContext";
 import { motion } from "framer-motion";
+import { Heart } from "lucide-react";
 
 const Favorites = () => {
-  const { productos } = useAPI();
+  const { favorites, removeFromFavorites } = useFavorites();
   const { addToCart } = useCart();
-  const [favoritos, setFavoritos] = useState([]);
 
-  // 🔹 Cargar favoritos desde localStorage
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem("favoritos")) || [];
-    setFavoritos(storedFavorites);
-  }, []);
-
-  // 🔹 Eliminar de favoritos y actualizar localStorage
-  const removeFromFavorites = (id) => {
-    const updatedFavorites = favoritos.filter((fav) => fav.id !== id);
-    setFavoritos(updatedFavorites);
-    localStorage.setItem("favoritos", JSON.stringify(updatedFavorites));
-    console.log(`Libro con ID ${id} eliminado de favoritos.`);
-  };
+  if (!favorites || favorites.length === 0) {
+    return (
+      <div className="p-6 bg-red-400/25 rounded-lg shadow-lg">
+        <h2 className="text-4xl font-lathusca text-black mb-8 border-b-4 border-red-400 w-fit">
+          Mis Favoritos
+        </h2>
+        <p className="text-gray-600 text-lg">No tienes libros en favoritos.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 bg-red-400/25 rounded-lg shadow-lg">
@@ -28,68 +25,60 @@ const Favorites = () => {
         Mis Favoritos
       </h2>
 
-      {favoritos.length === 0 ? (
-        <p className="text-gray-600 text-lg">No tienes libros en favoritos.</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {favoritos.map((producto) => (
-            <motion.div
-              key={producto.id}
-              className="relative w-full min-w-96 max-w-96 bg-white border-gray-200 rounded-lg shadow-md border-0 border-b-2 border-solid p-4 transition-transform duration-300 hover:scale-105"
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {favorites.map((producto) => (
+          <motion.div
+            key={producto.id}
+            className="mt-44 mb-4 p-2 items-center grid grid-cols-2 relative w-full min-w-96 max-w-96 h-36 bg-[#f9f0df] border-gray-200 rounded-lg shadow-sm border-0 border-b-2 border-solid"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.3 }}
+          >
+            <img
+              className="absolute bottom-16 left-5 rounded-lg shadow-lg border-b-2 border-r-2 border-gray-800/20"
+              src={producto.imagen}
+              alt={producto.titulo}
+              style={{ width: "150px", height: "220px" }}
+            />
+
+            <button
+              className="absolute top-2 right-2 z-20 text-gray-400 hover:text-red-500 transition"
+              onClick={(e) => {
+                e.stopPropagation();
+                removeFromFavorites(producto.id);
+              }}
             >
-              {/* 🔹 Ícono de corazón para quitar de favoritos */}
-              <button
-                className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-lg hover:bg-gray-200 transition"
-                onClick={() => removeFromFavorites(producto.id)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-red-500 hover:text-red-700 transition"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 
-                  4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 
-                  14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 
-                  6.86-8.55 11.54L12 21.35z" />
-                </svg>
-              </button>
+              <Heart className="w-6 h-6 text-red-500 fill-red-500" />
+            </button>
 
-              {/* 🔹 Imagen del libro */}
-              <div className="flex justify-center">
-                <img
-                  className="rounded-lg shadow-lg border-b-2 border-r-2 border-gray-800/20 w-40 h-60 object-cover"
-                  src={producto.imagen}
-                  alt={producto.titulo}
-                />
-              </div>
-
-              {/* 🔹 Título del libro */}
-              <h5 className="text-center text-lg font-semibold text-black mt-4">
+            <div className="col-start-2 mt-2 pr-8 overflow-hidden">
+              <h5 className="text-center text-lg font-semibold tracking-tighter text-gray-900 break-words whitespace-normal leading-tight">
                 {producto.titulo}
               </h5>
+            </div>
 
-              {/* 🔹 Precio */}
-              <div className="text-center text-2xl font-bold text-gray-900 mt-2">
+            <div className="col-start-1 ml-8 mt-6">
+              <span className="text-xl font-bold text-gray-900">
                 {producto.precio.toLocaleString("es-CL", {
                   style: "currency",
                   currency: "CLP",
                 })}
-              </div>
+              </span>
+            </div>
 
-              {/* 🔹 Botón de agregar al carrito */}
-              <div className="flex justify-center mt-4">
-                <button
-                  onClick={() => addToCart(producto)}
-                  className="w-full text-white bg-sky-900 hover:bg-sky-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Agregar al carrito
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
+            <div className="col-start-2 justify-self-center mt-6">
+              <button
+                className="px-4 py-2 bg-sky-900 text-white font-medium rounded-lg text-sm hover:bg-sky-950 transition"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addToCart(producto);
+                }}
+              >
+                Add to cart
+              </button>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };

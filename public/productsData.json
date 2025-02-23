@@ -1,8 +1,8 @@
 {
     "categorias": [
-      { "id": 1, "nombre": "Ficción" },
-      { "id": 2, "nombre": "No Ficción" },
-      { "id": 3, "nombre": "Ciencia Ficción" },
+      { "id": 1, "nombre": "Ficcion" },
+      { "id": 2, "nombre": "No Ficcion" },
+      { "id": 3, "nombre": "Ciencia Ficcion" },
       { "id": 4, "nombre": "Fantasía" },
       { "id": 5, "nombre": "Historia" }
     ],

@@ -5,13 +5,15 @@ const PaginatedProducts = ({ products, productsPerPage = 3 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    setCurrentIndex(0); // Reiniciar paginación cuando cambien los productos filtrados
+    setCurrentIndex(0);
   }, [products]);
 
   console.log("Productos en PaginatedProducts:", products); // <-- Agregar para depuración
 
   if (!products || products.length === 0) {
-    return <p className="text-center text-red-500">No hay productos disponibles.</p>;
+    return (
+      <p className="text-center text-red-500">No hay productos disponibles.</p>
+    );
   }
 
   const handleNext = () => {
@@ -28,14 +30,14 @@ const PaginatedProducts = ({ products, productsPerPage = 3 }) => {
 
   return (
     <div className="flex flex-col items-center">
-      {/* Mostrar productos paginados */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-        {products.slice(currentIndex, currentIndex + productsPerPage).map((producto) => (
-          <ProductCard key={producto.id} producto={producto} />
-        ))}
+        {products
+          .slice(currentIndex, currentIndex + productsPerPage)
+          .map((producto) => (
+            <ProductCard key={producto.id} producto={producto} />
+          ))}
       </div>
 
-      {/* Botones de paginación */}
       <div className="mt-4 flex gap-4">
         <button
           onClick={handlePrev}
