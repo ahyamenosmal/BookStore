@@ -34,15 +34,15 @@ function Sidebar({
         
         {allText && (
           <motion.div
-            className={`relative z-40 w-40 h-12 text-xl flex  items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double ${
+            className={`relative z-40 w-50 h-12 text-xl flex  items-center justify-center rounded-r-xl cursor-pointer font-semibold border-b-4 border-r-4 border-double ${
               selectedItem === null
                 ? "bg-yellow-400 text-sky-900 border-sky-900"
                 : "bg-sky-900 text-yellow-400 border-amber-500"
             }`}
-            initial={{ x: 50 }}
-            whileHover={{ x: 70 }}
+            initial={{ x: 70 }}
+            whileHover={{ x: 100 }}
             transition={{ type: "spring", stiffness: 200 }}
-            style={{ clipPath: "polygon(0 0, 100% 0, 90% 100%, 0% 100%)" }}
+            style={{ clipPath: "polygon(100% 0%, 85% 50%, 100% 100%, 0 100%, 0% 50%, 0 0)" }}
             onClick={() => setSelectedItem(null)}
           >
             {allText}
@@ -52,15 +52,15 @@ function Sidebar({
         {items.map((item, index) => (
           <motion.div
             key={index}
-            className={`relative z-40 w-40 h-12 text-xl flex items-center justify-center rounded-r-lg cursor-pointer font-semibold border-b-4 border-r-4 border-double ${
+            className={`relative z-40 w-56 h-12 text-xl flex items-center justify-center rounded-r-xl  cursor-pointer font-semibold border-b-4 border-r-4 border-double ${
               selectedItem === valueFn(item)
                 ? "bg-yellow-400 text-sky-900 border-sky-900"
                 : "bg-sky-900 text-yellow-400 border-amber-500"
             }`}
-            initial={{ x: 50 }}
-            whileHover={{ x: 70 }}
+            initial={{ x: 70 }}
+            whileHover={{ x: 100 }}
             transition={{ type: "spring", stiffness: 200 }}
-            style={{ clipPath: "polygon(0 0, 100% 0, 90% 100%, 0% 100%)" }}
+            style={{ clipPath: "polygon(100% 0%, 85% 50%, 100% 100%, 0 100%, 0% 50%, 0 0)" }}
             onClick={() => {
               console.log("Elemento clickeado:", valueFn(item));
               setSelectedItem(valueFn(item));

@@ -2,7 +2,7 @@ import { useCart } from "../../contexts/CartContext";
 import { Plus, Minus } from "lucide-react";
 
 const CartItem = ({ producto }) => {
-  const { removeFromCart } = useCart();
+  const { addToCart, removeFromCart } = useCart();
 
   return (
     <div className="flex items-center justify-between border p-4 rounded-lg shadow-md bg-red-400/50">
