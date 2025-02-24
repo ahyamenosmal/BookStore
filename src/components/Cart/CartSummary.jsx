@@ -22,11 +22,7 @@ const CartSummary = () => {
       <p className="text-gray-700 ">IVA (19%): {iva.toLocaleString("es-CL", { style: "currency", currency: "CLP" })}</p>
       <p className="text-xl font-bold ">Total: {total.toLocaleString("es-CL", { style: "currency", currency: "CLP" })}</p>
 </div>
-<button 
 
-className="bg-sky-900 w-1/2 self-center mt-24 text-white  py-2  rounded-lg hover:bg-sky-950 transition ">
-  Comprar
-</button>
 
 
     </div>
