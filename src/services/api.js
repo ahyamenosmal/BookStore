@@ -1,6 +1,8 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/scripta-backend/v1";
 
 console.log("🔍 API_URL en uso:", API_URL); // 👀 Ver en la consola si la URL se carga bien
+
+export default API_URL; // ✅ Exportación por defecto corregida
 
 // ✅ Obtener todas las categorías
 export const getCategories = async () => {
@@ -30,7 +32,7 @@ export const createCategory = async (categoryData) => {
     }
 };
 
-// ✅ Obtener todas los productos
+// ✅ Obtener todos los productos
 export const getProducts = async () => {
     try {
         const response = await fetch(`${API_URL}/products`);

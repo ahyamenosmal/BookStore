@@ -1,8 +1,47 @@
-// src/components/Admin/AdminDashboard.jsx
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import API_URL from "../../services/api";
+import AdminSidebar from "../../components/Admin/AdminSidebar";
 
 const AdminDashboard = () => {
+  const [adminData, setAdminData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+
+    if (!token) {
+      navigate("/admin-login");
+      return;
+    }
+
+    fetch(`${API_URL}/admin`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Sesión expirada o acceso no autorizado");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setAdminData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("❌ Error al obtener datos del admin:", err);
+        setError(err.message);
+        setLoading(false);
+        localStorage.removeItem("adminToken");
+        navigate("/admin-login");
+      });
+  }, [navigate]);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#f9f0df]">
       {/* Header */}
@@ -11,36 +50,34 @@ const AdminDashboard = () => {
       </header>
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="w-1/4 bg-gray-100 p-6 border-r border-gray-300">
-          <nav className="flex flex-col space-y-4">
-            <Link
-              to="/admin/products"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Gestión de Productos
-            </Link>
-            <Link
-              to="/admin/orders"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Gestión de Órdenes
-            </Link>
-            <Link
-              to="/admin/categories"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Gestión de Categorías
-            </Link>
-          </nav>
-        </aside>
+        <AdminSidebar /> {/* ✅ Ahora usa el Sidebar modular */}
         {/* Contenido principal */}
         <main className="flex-1 p-8">
           <h2 className="text-2xl font-bold mb-4">Dashboard de Administración</h2>
-          <p className="text-gray-600">
-            Bienvenido al panel de administración. Desde aquí puedes gestionar
-            productos, órdenes y categorías.
-          </p>
-          {/* Aquí puedes incluir más secciones o componentes según sea necesario */}
+
+          {loading ? (
+            <p className="text-gray-600">Cargando...</p>
+          ) : error ? (
+            <p className="text-red-500">{error}</p>
+          ) : (
+            <div className="bg-white p-6 shadow-md rounded-lg">
+              <h3 className="text-xl font-semibold text-blue-800">
+                Bienvenido, {adminData.usuario}
+              </h3>
+              <p className="text-gray-600">
+                Desde aquí puedes gestionar productos, órdenes y categorías.
+              </p>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("adminToken");
+                  navigate("/admin-login");
+                }}
+                className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+              >
+                Cerrar Sesión
+              </button>
+            </div>
+          )}
         </main>
       </div>
     </div>
