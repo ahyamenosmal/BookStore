@@ -4,11 +4,11 @@ import { useAuth } from "../../contexts/AuthContext";
 function RegisterForm() {
   const { register } = useAuth();
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    phone: "",
-    address: "",
+    nombre: "",
+    correo_electronico: "",
+    contraseña: "",
+    telefono: "",
+    direccion: "",
   });
   const [errors, setErrors] = useState({});
   
@@ -26,7 +26,7 @@ function RegisterForm() {
   // Manejo de cambios en el formulario
   const handleChange = (e) => {
     let { name, value } = e.target;
-    if (name === "phone") {
+    if (name === "telefono") {
       value = formatPhone(value);
     }
     setForm({ ...form, [name]: value });
@@ -37,13 +37,13 @@ function RegisterForm() {
   // Validación de los campos antes del envío
   const validateForm = () => {
     let newErrors = {};
-    if (!form.name.trim()) newErrors.name = "El nombre es obligatorio.";
-    if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
-      newErrors.email = "Correo inválido.";
-    if (form.password.length < 8)
-      newErrors.password = "La contraseña debe tener al menos 8 caracteres.";
+    if (!form.nombre.trim()) newErrors.nombre = "El nombre es obligatorio.";
+    if (!form.correo_electronico.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
+      newErrors.correo_electronico = "Correo inválido.";
+    if (form.contraseña.length < 8)
+      newErrors.contraseña = "La contraseña debe tener al menos 8 caracteres.";
 
-    if (!form.address.trim()) newErrors.address = "La dirección es obligatoria.";
+    if (!form.direccion.trim()) newErrors.direccion = "La dirección es obligatoria.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -72,15 +72,15 @@ function RegisterForm() {
           </label>
           <input
             type="text"
-            name="name"
-            id="name"
+            name="nombre"
+            id="nombre"
             className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="John Doe"
-            value={form.name}
+            value={form.nombre}
             onChange={handleChange}
             required
           />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+          {errors.nombre && <p className="text-red-500 text-sm">{errors.name}</p>}
         </div>
 
         {/* Email */}
@@ -90,15 +90,15 @@ function RegisterForm() {
           </label>
           <input
             type="email"
-            name="email"
-            id="email"
+            name="correo_electronico"
+            id="correo_electronico"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             placeholder="name@company.com"
-            value={form.email}
+            value={form.correo_electronico}
             onChange={handleChange}
             required
           />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+          {errors.correo_electronico && <p className="text-red-500 text-sm">{errors.email}</p>}
         </div>
 
         {/* Contraseña */}
@@ -108,15 +108,15 @@ function RegisterForm() {
           </label>
           <input
             type="password"
-            name="password"
-            id="password"
+            name="contraseña"
+            id="contraseña"
             placeholder="••••••••"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-            value={form.password}
+            value={form.contraseña}
             onChange={handleChange}
             required
           />
-          {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+          {errors.contraseña && <p className="text-red-500 text-sm">{errors.password}</p>}
         </div>
 
         {/* Teléfono */}
@@ -126,15 +126,15 @@ function RegisterForm() {
           </label>
           <input
             type="tel"
-            name="phone"
-            id="phone"
+            name="telefono"
+            id="telefono"
             className="input-field"
             placeholder="+56 9 XXXX XXXX"
-            value={form.phone}
+            value={form.telefono}
             onChange={handleChange}
             required
           />
-          {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+          {errors.telefono && <p className="text-red-500 text-sm">{errors.phone}</p>}
         </div>
 
         {/* Dirección */}
@@ -144,15 +144,15 @@ function RegisterForm() {
           </label>
           <input
             type="text"
-            name="address"
-            id="address"
+            name="direccion"
+            id="direccion"
             placeholder="Av. Siempreviva 742"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-            value={form.address}
+            value={form.direccion}
             onChange={handleChange}
             required
           />
-          {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
+          {errors.direccion && <p className="text-red-500 text-sm">{errors.address}</p>}
         </div>
 
         {/* Botón de registro */}

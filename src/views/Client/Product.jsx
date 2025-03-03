@@ -25,7 +25,7 @@ const Product = () => {
 
   return (
     <>
-      <header className="h-16"></header>
+    
       <Layout>
         <h1 className="text-5xl font-lathusca mx-40 mt-10 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
           {categoriaProducto}

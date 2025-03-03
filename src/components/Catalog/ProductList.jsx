@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAPI } from "../../contexts/APIContext.jsx";
-import Sidebar from "Sidebar.jsx";
+import Sidebar from "./Sidebar.jsx";
 import PaginatedProducts from "../../components/General/PaginatedProducts.jsx";
 
 const ProductList = () => {
@@ -9,7 +9,7 @@ const ProductList = () => {
   
     // Filtrar productos por categoría
     const productosFiltrados = categoriaSeleccionada
-      ? productos.filter((producto) => producto.categoria === categoriaSeleccionada)
+      ? productos.filter((producto) => producto.categoriaId === categoriaSeleccionada)
       : productos;
   
     return (

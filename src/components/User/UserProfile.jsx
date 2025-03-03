@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PersonalDataForm from "./PersonalDataForm.jsx";
 import OrderHistory from "./OrderHistory.jsx";
@@ -6,9 +6,15 @@ import Favorites from "./Favorites.jsx";
 import Sidebar from "../Catalog/Sidebar.jsx";
 import Layout from "../General/Layout.jsx";
 import LogoutButton from "./LogoutButton.jsx";
+import {useAuth } from "../../contexts/AuthContext.jsx";
 
 const UserProfile = () => {
   const [activeSection, setActiveSection] = useState("datos");
+  const { user, fetchUserData } = useAuth(); 
+
+  useEffect(() => {
+    fetchUserData(); 
+  }, []);
 
   const sections = [
     { key: "datos", label: "Mis Datos" },
@@ -19,7 +25,7 @@ const UserProfile = () => {
 
   // Mapeo de sección a componente
   const sectionComponents = {
-    datos: <PersonalDataForm />,
+    datos: <PersonalDataForm user={user} />, 
     compras: <OrderHistory />,
     favoritos: <Favorites />,
     "Cerrar Sesión": <LogoutButton />,
@@ -27,7 +33,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <header className="h-10"></header>
+      
       <Layout>
         <Sidebar
           items={sections}

@@ -11,6 +11,7 @@ function LoginForm() {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
 
   // Maneja cambios en los inputs
   const handleChange = (e) => {
@@ -18,21 +19,22 @@ function LoginForm() {
   };
 
   // Manejo del envío del formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    const success = login(form.email, form.password);
+    setError("");
+
+    try {
+      const success = await login(form.email, form.password);
     
-    if (success) {
-      console.log("Inicio de sesión exitoso");
-      
-      // Redirige según el estado del carrito
-      if (cart.length > 0) {
-        navigate("/cart"); 
+      if (success) {
+        console.log("Inicio de sesión exitoso");
+        navigate(cart.length > 0 ? "/cart" : "/"); 
       } else {
-        navigate("/"); 
+        setError("Credenciales incorrectas. Inténtalo de nuevo.");
       }
-    } else {
-      console.error("Credenciales incorrectas");
+    } catch (err) {
+      console.error("Error al iniciar sesión:", err);
+      setError("Ocurrió un error en el servidor. Inténtalo más tarde.");
     }
   };
 
@@ -42,6 +44,9 @@ function LoginForm() {
         <h5 className="text-xl font-medium text-gray-900 dark:text-white">
           Inicia sesión en nuestra plataforma
         </h5>
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
         <div>
           <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Correo Electrónico

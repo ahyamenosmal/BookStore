@@ -2,16 +2,17 @@ import React from "react";
 import Navbar from "../../components/General/Navbar.jsx";
 import Footer from "../../components/General/Footer.jsx";
 import ChangeForm from "../../components/User/ChangeForm.jsx";
+import Layout from "../../components/General/Layout.jsx";
 
 function Login() {
   return (
     <>
-      <header className="h-32"></header>
-      <Navbar />
-      <div className=" mt-24">
+      
+      <Layout>
+      
         <ChangeForm></ChangeForm>
-      </div>
-      <Footer />
+      
+      </Layout >
     </>
   );
 }

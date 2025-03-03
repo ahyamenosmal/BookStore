@@ -14,11 +14,11 @@ const ProductCard = ({ producto }) => {
 
   return (
     <div className="mt-44 mb-4 p-2 items-center grid grid-cols-2 relative w-full min-w-96 max-w-96 h-36 bg-red-400/25 border-gray-200 rounded-lg shadow-sm border-0 border-b-2 border-solid">
-      <Link to={`/product/${producto.id}`}>
+      <Link to={`/producto/${producto.id_producto}`}>
         <img
           className="absolute bottom-16 left-5 rounded-lg shadow-lg border-b-2 border-r-2 border-gray-800/20"
           src={producto.imagen}
-          alt={producto.titulo}
+          alt={producto.nombre}
           style={{ width: "150px", height: "220px" }}
         />
       </Link>
@@ -37,7 +37,7 @@ const ProductCard = ({ producto }) => {
 
       <div className="col-start-2 mt-2 pr-8 overflow-hidden">
         <h5 className="text-center text-lg font-semibold tracking-tighter text-gray-900 dark:text-white break-words whitespace-normal leading-tight">
-          {producto.titulo}
+          {producto.nombre}
         </h5>
       </div>
 

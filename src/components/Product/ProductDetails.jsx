@@ -11,7 +11,7 @@ const ProductDetails = ({ producto, isFav, toggleFavorite }) => {
   return (
     <div className="flex justify-between items-start px-5">
       <div className="space-y-8">
-        <h2 className="text-3xl font-bold text-gray-900">{producto.titulo}</h2>
+        <h2 className="text-3xl font-bold text-gray-900">{producto.nombre}</h2>
         <p className="text-gray-700 font-semibold text-lg">{producto.autor}</p>
         <p className="text-gray-700 text-lg mt-1">{producto.descripcion}</p>
       </div>

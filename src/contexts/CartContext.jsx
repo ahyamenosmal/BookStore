@@ -18,11 +18,11 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.id === product.id);
+      const existingProduct = prevCart.find((item) => item.id_producto === product.id_producto);
 
       if (existingProduct) {
         return prevCart.map((item) =>
-          item.id === product.id
+          item.id_producto === product.id_producto
             ? { ...item, cantidad: item.cantidad + 1 }
             : item
         );

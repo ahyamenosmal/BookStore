@@ -10,7 +10,7 @@ const ProductIdCard = ({ producto, isFav, toggleFavorite, addToCart }) => (
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
-    <ProductImg src={producto.imagen} alt={producto.titulo} />
+    <ProductImg src={producto.imagen} alt={producto.nombre} />
     <ProductInfo
       producto={producto}
       isFav={isFav}

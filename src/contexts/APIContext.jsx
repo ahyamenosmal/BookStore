@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import APIService from "../services/APIservice.jsx";
 
 const APIContext = createContext();
 
@@ -6,22 +7,20 @@ export const APIProvider = ({ children }) => {
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
 
+  const apiService = new APIService();
+
   useEffect(() => {
-    fetch("/productsData.json")
-      .then((response) => response.json())
-      .then((jsonData) => {
-        if (jsonData.categorias && jsonData.productos) {
-          setCategorias(jsonData.categorias);
-          setProductos(jsonData.productos);
-        } else {
-          console.error("El JSON no tiene la estructura esperada");
-        }
-      })
-      .catch((error) => console.error("Error al obtener los datos:", error));
+    const fetchData = async () => {
+      const fetchedCategorias = await apiService.fetchCategorias();
+      const fetchedProductos = await apiService.fetchProductos();
+      setCategorias(fetchedCategorias);
+      setProductos(fetchedProductos);
+    };
+    fetchData();
   }, []);
 
   return (
-    <APIContext.Provider value={{ categorias, productos }}>
+    <APIContext.Provider value={{ categorias, productos, apiService }}>
       {children}
     </APIContext.Provider>
   );
