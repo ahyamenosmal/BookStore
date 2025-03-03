@@ -3,7 +3,7 @@ import ScripaWhite from "../../assets/Scripta_white.svg";
 
 function Footer() {
   return (
-    <footer className=" bg-red-400 dark:bg-gray-900 ">
+    <footer className=" bg-red-400 dark:bg-gray-900 mt-24">
       <div className="mx-auto w-full max-w-screen-xl text-white p-4 py-6 lg:py-8 mt-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">

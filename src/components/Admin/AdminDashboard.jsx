@@ -1,6 +1,7 @@
 // src/components/Admin/AdminDashboard.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import CategoryManager from "./CategoryManager";
 
 const AdminDashboard = () => {
   return (
@@ -40,7 +41,7 @@ const AdminDashboard = () => {
             Bienvenido al panel de administración. Desde aquí puedes gestionar
             productos, órdenes y categorías.
           </p>
-          {/* Aquí puedes incluir más secciones o componentes según sea necesario */}
+          <Outlet />
         </main>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 
 const Favorites = () => {
-  const { favorites, removeFromFavorites } = useFavorites();
+  const { favorites, removeFavorite } = useFavorites();
   const { addToCart } = useCart();
 
   if (!favorites || favorites.length === 0) {
@@ -28,7 +28,7 @@ const Favorites = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {favorites.map((producto) => (
           <motion.div
-            key={producto.id}
+            key={producto.id_producto}
             className="mt-44 mb-4 p-2 items-center grid grid-cols-2 relative w-full min-w-96 max-w-96 h-36 bg-[#f9f0df] border-gray-200 rounded-lg shadow-sm border-0 border-b-2 border-solid"
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.3 }}
@@ -44,7 +44,7 @@ const Favorites = () => {
               className="absolute top-2 right-2 z-20 text-gray-400 hover:text-red-500 transition"
               onClick={(e) => {
                 e.stopPropagation();
-                removeFromFavorites(producto.id);
+                removeFavorite(producto.id_producto);
               }}
             >
               <Heart className="w-6 h-6 text-red-500 fill-red-500" />

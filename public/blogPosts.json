@@ -2,35 +2,35 @@
     "posts": [
       {
         "id": 1,
-        "titulo": "La evolución de la inteligencia artificial",
-        "autor": "María López",
-        "fecha": "2024-02-15",
-        "imagen": "https://placehold.co/60x40/png",
-        "contenido": "La inteligencia artificial ha cambiado drásticamente en los últimos años, influenciando múltiples sectores..."
+        "titulo": "Los mejores libros de ciencia ficción para este año",
+        "autor": "Carlos Herrera",
+        "fecha": "2024-03-01",
+        "imagen": "https://i.blogs.es/7a856c/diseno-sin-titulo-5-/1366_2000.jpg",
+        "contenido": "La ciencia ficción sigue cautivando a lectores de todo el mundo. Desde clásicos como 'Dune' hasta nuevas propuestas, descubre qué libros deberías leer este año."
       },
       {
         "id": 2,
-        "titulo": "Tendencias en el desarrollo web para 2024",
-        "autor": "Carlos Fernández",
-        "fecha": "2024-02-10",
-        "imagen": "https://placehold.co/60x40/png",
-        "contenido": "Con la aparición de nuevas tecnologías como WebAssembly y la popularidad de frameworks como Svelte..."
+        "titulo": "¿Cómo elegir el libro perfecto según tu género favorito?",
+        "autor": "María Torres",
+        "fecha": "2024-03-05",
+        "imagen": "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/LNZ3QCP42JDAXMPYLEPHIMK6EY.png",
+        "contenido": "¿Te gusta la fantasía, el terror o la historia? Te damos algunas claves para encontrar libros que se adapten a tu estilo de lectura y mantener siempre una buena selección."
       },
       {
         "id": 3,
-        "titulo": "¿Vale la pena aprender TypeScript?",
-        "autor": "Andrea González",
-        "fecha": "2024-02-08",
-        "imagen": "https://placehold.co/60x40/png",
-        "contenido": "TypeScript se ha convertido en una herramienta indispensable para muchos desarrolladores..."
+        "titulo": "Los beneficios de leer libros en formato físico",
+        "autor": "Javier Méndez",
+        "fecha": "2024-03-10",
+        "imagen": "https://www.65ymas.com/uploads/s1/42/98/49/bigstock-woman-hand-takes-e-reader-from-362202505.jpeg",
+        "contenido": "En la era digital, los libros en papel siguen teniendo ventajas únicas. Te contamos por qué deberías seguir disfrutando de la lectura en su formato tradicional."
       },
       {
         "id": 4,
-        "titulo": "¿Vale la pena aprender TypeScript?",
+        "titulo": "Autores emergentes que deberías conocer este 2024",
         "autor": "Andrea González",
-        "fecha": "2024-02-08",
-        "imagen": "https://placehold.co/60x40/png",
-        "contenido": "TypeScript se ha convertido en una herramienta indispensable para muchos desarrolladores..."
+        "fecha": "2024-03-15",
+        "imagen": "https://www.infobae.com/resizer/v2/YH6WWSBECNBS5MLBCE35436ZZE.jpg?auth=346da8e2ec697bbc7b4092bfeb5e098dd46d4446ca941f7a8bd3fc1ea0089f4b&smart=true&width=1024&height=512&quality=85",
+        "contenido": "El mundo de la literatura está lleno de nuevas voces que traen historias frescas y emocionantes. Aquí te presentamos algunos de los escritores que están revolucionando el panorama literario."
       }
     ]
   }

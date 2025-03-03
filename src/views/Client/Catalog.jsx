@@ -19,17 +19,13 @@ function Catalog() {
       )
     : productos;
 
-  console.log("Categoría seleccionada:", categoriaSeleccionada);
-  console.log("ID de la categoría seleccionada:", categoriaSeleccionadaId);
-  console.log("Productos filtrados:", productosFiltrados);
-
   return (
     <>
-      <header className="h-10"></header>
+
       <Layout>
-        <div className="flex flex-row">
+        <div className="flex flex-row ml-32">
           <div>
-            <Sidebar
+            <Sidebar 
               items={categorias}
               selectedItem={categoriaSeleccionada}
               setSelectedItem={setCategoriaSeleccionada}

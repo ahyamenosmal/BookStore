@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import { Car } from "lucide-react";
 
 const PersonalDataForm = () => {
   const { user, updateUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    name: user?.name || "",
-    email: user?.email || "",
-    phone: user?.phone || "",
-    address: user?.address || "",
+    nombre: user?.nombre || "",
+    correo_electronico: user?.correo_electronico || "",
+    direcion: user?.direcion || "",
+    telefono: user?.telefono || "",
   });
+
+  useEffect(() => {
+    if (user?.info) {
+      console.log("Datos del usuario recibidos:", user); // ✅ Depuración
+      setFormData({
+        nombre: user.info.nombre || "",
+        correo_electronico: user.info.correo_electronico || "",
+        direccion: user.info.direccion || "",
+        telefono: user.info.telefono || "",
+      });
+    }
+  }, [user]);
 
   // Manejo de cambios en los campos
   const handleChange = (e) => {
@@ -17,10 +30,19 @@ const PersonalDataForm = () => {
   };
 
   // Guardar cambios
-  const handleSave = () => {
-    updateUser(formData);
+  const handleSave = async () => {
+    const success = await updateUser(formData);
+    if (success) {
     setIsEditing(false);
+    alert ("Datos actualizados con éxito");
+    } else {
+      alert("Error al guardar los cambios");
+    }
   };
+
+  if (!user) {
+    return <p className="text-gray-700 font-medium">Cargando datos del usuario...</p>;
+  }
 
   return (
     <div className="bg-red-400/25 p-6 rounded-lg shadow-lg ">
@@ -35,8 +57,8 @@ const PersonalDataForm = () => {
           <label className="text-gray-700 font-medium">Nombre</label>
           <input
             type="text"
-            name="name"
-            value={formData.name}
+            name="nombre"
+            value={formData.nombre}
             onChange={handleChange}
             disabled={!isEditing}
             className={`p-2 border w-96 ${
@@ -50,8 +72,8 @@ const PersonalDataForm = () => {
           <label className="text-gray-700 font-medium">Correo Electrónico</label>
           <input
             type="email"
-            name="email"
-            value={formData.email}
+            name="correo_electronico"
+            value={formData.correo_electronico}
             disabled
             className="p-2 border border-gray-300 rounded-lg bg-gray-200 text-gray-500"
           />
@@ -62,8 +84,8 @@ const PersonalDataForm = () => {
           <label className="text-gray-700 font-medium">Teléfono</label>
           <input
             type="text"
-            name="phone"
-            value={formData.phone}
+            name="telefono"
+            value={formData.telefono} 
             onChange={handleChange}
             disabled={!isEditing}
             className={`p-2 border ${
@@ -77,8 +99,8 @@ const PersonalDataForm = () => {
           <label className="text-gray-700 font-medium">Dirección</label>
           <input
             type="text"
-            name="address"
-            value={formData.address}
+            name="direccion"
+            value={formData.direccion}
             onChange={handleChange}
             disabled={!isEditing}
             className={`p-2 border ${

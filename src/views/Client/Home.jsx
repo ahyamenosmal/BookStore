@@ -32,7 +32,7 @@ const Home = () => {
           </AnimatedSection>
 
           <AnimatedSection>
-          <div className="flex-row justify-items-center col-md-12">
+          <div className="flex-row mt-16 justify-items-center col-md-12">
             <h1 className="text-star text-5xl font-lathusca m-5 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
               Novedades
             </h1>
@@ -42,7 +42,7 @@ const Home = () => {
 
 
           <AnimatedSection>
-          <div className="flex-row justify-items-center col-md-12">
+          <div className="flex-row mt-16  justify-items-center col-md-12">
             <h1 className="text-star text-5xl font-lathusca m-5 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
               Ofertas unicas
             </h1>
@@ -61,12 +61,12 @@ const Home = () => {
               Ultimos Articulos del Blog
             
             </h1>
-<div className="grid grid-cols-2">
+<div className="grid grid-cols-2 mt-32 gap-16">
 
             {/* 🔹 Animación de aparición en cascada */}
             
               {posts.map((post) => (
-                <BlogPostCard key={post.id} post={post} />
+                <BlogPostCard key={post.id} post={post}  />
               ))}
            
               </div>
