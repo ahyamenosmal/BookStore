@@ -8,7 +8,7 @@ const ProductCard = ({ producto }) => {
   const { addToCart } = useCart();
   const { toggleFavorite, favorites } = useFavorites(); // <-- Hook del FavoritesContext
 
-  const isFav = favorites.some((fav) => fav.id === producto.id);
+  const isFav = favorites.some((fav) => fav.id_producto === producto.id_producto);
 
   if (!producto) return null;
 
