@@ -7,6 +7,7 @@ export default {
         lathusca: ["awesome lathusca", "sans-serif"],
       },
     },
+  
   },
   plugins: [require("flowbite/plugin")],
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogPostCard = ({ post }) => {
   return (
-<div className=" max-w-screen-sm bg-red-400/25 p-6 rounded-lg shadow-md text-gray-900">
+<div className=" max-w-screen-sm bg-[#f9d0c5] p-6 rounded-lg shadow-md text-gray-900">
 <div className="flex flex-col ">
 
       <img src={post.imagen} alt={post.titulo} className="w-60 h-40  rounded-md" />

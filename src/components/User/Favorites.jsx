@@ -10,7 +10,7 @@ const Favorites = () => {
 
   if (!favorites || favorites.length === 0) {
     return (
-      <div className="p-6 bg-red-400/25 rounded-lg shadow-lg">
+      <div className="p-6 bg-[#f9d0c5] rounded-lg shadow-lg">
         <h2 className="text-4xl font-lathusca text-black mb-8 border-b-4 border-red-400 w-fit">
           Mis Favoritos
         </h2>
@@ -20,7 +20,7 @@ const Favorites = () => {
   }
 
   return (
-    <div className="p-6 bg-red-400/25 rounded-lg shadow-lg">
+    <div className="p-6 bg-[#f9d0c5] rounded-lg shadow-lg">
       <h2 className="text-4xl font-lathusca text-black mb-8 border-b-4 border-red-400 w-fit">
         Mis Favoritos
       </h2>

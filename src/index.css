@@ -16,14 +16,14 @@ body {
 }
 
 .Layout::before {
-    content: "";
-    position: absolute;
+    content:"" ;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: url("src/assets/fondo.svg");
-    background-repeat: repeat;
+    background-repeat:repeat;
     background-size: contain;
     opacity: 0.1; /* Reduce la opacidad para que se vea más claro */
     z-index: -1; /* Mantiene el SVG en el fondo */
