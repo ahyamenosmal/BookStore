@@ -4,32 +4,45 @@ import Layout from "../../components/General/Layout.jsx";
 import Sidebar from "../../components/Catalog/Sidebar.jsx";
 import PaginatedProducts from "../../components/General/PaginatedProdutcs.jsx";
 import { useAPI } from "../../contexts/APIContext";
+import {DotLottieReact} from "@lottiefiles/dotlottie-react";
 
 function Catalog() {
   const { productos, categorias } = useAPI();
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
 
-  const categoriaSeleccionadaId = categorias.find(
-    (cat) => cat.nombre === categoriaSeleccionada
-  )?.id;
+  if (!productos || productos.length === 0) {
+    return (
+      <Layout>
+        <div className="flex flex-col items-center justify-center ">
+          <DotLottieReact
+            src="https://lottie.host/42d01473-c6c8-4ae9-857f-a976ed0fd00d/O29QbCJ1BB.lottie"
+            loop
+            autoplay
+            style={{ width: 400, height: 400 }}
+          />
+          <p className="text-3xl ">Cargando productos...</p>
+        </div>
+      </Layout>
+    );
+  }
 
   const productosFiltrados = categoriaSeleccionada
     ? productos.filter(
-        (producto) => producto.categoriaId === categoriaSeleccionadaId
+        (producto) => producto.id_categoria === categoriaSeleccionada
       )
     : productos;
 
   return (
     <>
-
       <Layout>
         <div className="flex flex-row ml-32">
           <div>
-            <Sidebar 
+            <Sidebar
               items={categorias}
               selectedItem={categoriaSeleccionada}
               setSelectedItem={setCategoriaSeleccionada}
               getItemLabel={(categoria) => categoria.nombre}
+              getItemValue={(categoria) => categoria.id_categoria}
             />
           </div>
 
@@ -51,7 +64,7 @@ function Catalog() {
                     productsPerPage={9}
                     renderProduct={(product, index) => (
                       <motion.div
-                        key={product.id}
+                        key={product.id_categoria}
                         className="shadow-md rounded-lg overflow-hidden"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
