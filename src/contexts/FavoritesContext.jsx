@@ -31,17 +31,61 @@ export function FavoritesProvider({ children }) {
   };
 
   // Alterna un producto en favoritos
-  const toggleFavorite = (producto) => {
+  const toggleFavorite = async (producto) => {
     if (!user) {
       alert("Debes estar logeado para añadir favoritos");
       return;
     }
 
-    const isFav = isFavorite(producto.id_producto);
+    const isFav = favorites.some((fav) => fav.id_producto === producto.id_producto);
+    const token = localStorage.getItem("token");
+
     if (isFav) {
-      removeFavorite(producto.id_producto);
+      // Si ya es favorito, eliminamos vía DELETE
+      try {
+        const response = await fetch(
+          `${API_URL}/scripta-backend/v1/favoritos/${favorites.id_favorito}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+  
+        if (response.ok) {
+          // Actualizamos el estado eliminando el producto
+          setFavorites((prevFavorites) =>
+            prevFavorites.filter((fav) => fav.id_producto !== producto.id_producto)
+          );
+        } else {
+          console.error("Error al eliminar favorito en el servidor");
+        }
+      } catch (error) {
+        console.error("Error al eliminar favorito:", error);
+      }
     } else {
-      setFavorites([...favorites, producto]);
+      // Si no es favorito, lo agregamos vía POST
+      try {
+        const response = await fetch(`${API_URL}/scripta-backend/v1/favoritos`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(producto),
+        });
+  
+        if (response.ok) {
+          const newFavorite = await response.json();
+          setFavorites((prevFavorites) => [...prevFavorites, newFavorite]);
+        } else {
+          console.error("Error al agregar favorito en el servidor");
+        }
+      } catch (error) {
+        console.error("Error al agregar favorito:", error);
+      }
     }
   };
 

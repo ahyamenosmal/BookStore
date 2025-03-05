@@ -45,7 +45,7 @@ const PersonalDataForm = () => {
   }
 
   return (
-    <div className="bg-red-400/25 p-6 rounded-lg shadow-lg ">
+    <div className="bg-[#f9d0c5] p-6 rounded-lg shadow-lg ">
       <h2 className="text-4xl font-lathusca text-black mb-8 border-b-4 border-red-400 w-fit">
         Mis Datos
       </h2>
