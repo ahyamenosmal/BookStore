@@ -38,5 +38,3 @@ const ChangeForm = () => {
 export default ChangeForm;
 
 
-
-// quizas hacer un div mas grande que gire por completo y se muestre el otro lado con un formulario distinto

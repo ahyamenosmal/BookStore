@@ -44,7 +44,7 @@ export function FavoritesProvider({ children }) {
       // Si ya es favorito, eliminamos vía DELETE
       try {
         const response = await fetch(
-          `${API_URL}/scripta-backend/v1/favoritos/${producto.id_producto}`,
+          `${API_URL}/scripta-backend/v1/favoritos/${favorites.id_favorito}`,
           {
             method: "DELETE",
             headers: {
