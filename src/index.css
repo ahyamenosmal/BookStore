@@ -22,7 +22,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("src/assets/fondo.svg");
+    background-image: url("https://raw.githubusercontent.com/MelladoDev/BookStore/2ff047e93a373ac0b329a69a22abdff932be0baa/src/assets/fondo.svg");
     background-repeat:repeat;
     background-size: contain;
     opacity: 0.1; /* Reduce la opacidad para que se vea más claro */

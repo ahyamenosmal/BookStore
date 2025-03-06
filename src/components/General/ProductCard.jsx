@@ -13,7 +13,7 @@ const ProductCard = ({ producto }) => {
   if (!producto) return null;
 
   return (
-    <div className="mt-44 mb-4 p-2 items-center grid grid-cols-2 relative w-full min-w-96 max-w-96 h-36 bg-[#f9d0c5] border-gray-200 rounded-lg shadow-sm border-0 border-b-2 border-solid">
+    <div className="mt-44 mb-4 p-2 items-center grid grid-cols-2 relative w-full min-w-96 max-w-96 h-36 bg-[#f9d0c5] border-gray-800/20 rounded-lg shadow-sm border-0 border-b-2 border-solid">
       <Link to={`/producto/${producto.id_producto}`}>
         <img
           className="absolute bottom-16 left-5 rounded-lg shadow-lg border-b-2 border-r-2 border-gray-800/20"
@@ -36,13 +36,13 @@ const ProductCard = ({ producto }) => {
       </button>
 
       <div className="col-start-2 mt-2 pr-8 overflow-hidden">
-        <h5 className="text-center text-lg font-semibold tracking-tighter text-gray-900 dark:text-white break-words whitespace-normal leading-tight">
+        <h5 className="text-center text-lg font-semibold tracking-tighter text-gray-900  break-words whitespace-normal leading-tight">
           {producto.nombre}
         </h5>
       </div>
 
       <div className="col-start-1 ml-8 mt-6">
-        <span className="text-xl font-bold text-gray-900 dark:text-white">
+        <span className="text-xl font-bold text-gray-900 ">
           {producto.precio.toLocaleString("es-CL", {
             style: "currency",
             currency: "CLP",
@@ -58,7 +58,7 @@ const ProductCard = ({ producto }) => {
             addToCart(producto);
           }}
         >
-          Add to cart
+          Agregar al carrito
         </button>
       </div>
     </div>

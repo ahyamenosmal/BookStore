@@ -36,7 +36,7 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) =>
       prevCart
         .map((item) =>
-          item.id === productId ? { ...item, cantidad: item.cantidad - 1 } : item
+          item.id_producto === productId ? { ...item, cantidad: item.cantidad - 1 } : item
         )
         .filter((item) => item.cantidad > 0)
     );

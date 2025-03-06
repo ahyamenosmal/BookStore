@@ -8,8 +8,6 @@ const PaginatedProducts = ({ products, productsPerPage = 3 }) => {
     setCurrentIndex(0);
   }, [products]);
 
-  console.log("Productos en PaginatedProducts:", products); // <-- Agregar para depuración
-
   if (!products || products.length === 0) {
     return (
       <p className="text-center text-red-500">No hay productos disponibles.</p>
