@@ -5,6 +5,7 @@ import { useCart } from "../../contexts/CartContext.jsx";
 import { useAPI } from "../../contexts/APIContext.jsx";
 import CartSummary from "../../components/Cart/CartSummary.jsx";
 import { Navigate } from "react-router";
+import CheckoutButton from "../../components/Cart/CheckoutButton.jsx";
 
 function Cart() {
   const { cart, clearCart } = useCart();
@@ -54,9 +55,7 @@ function Cart() {
           </div>
           <div className="col-start-3  row-start-3  place-self-end " >
             {cart.length > 0 && (
-              <button className="  bg-sky-900 w-52  mt-24 text-white  py-2  rounded-lg hover:bg-sky-950 transition ">
-                Comprar
-              </button>
+              <CheckoutButton/>
             )}
           </div>
         </div>

@@ -3,15 +3,29 @@ import { useFavorites } from "../../contexts/FavoritesContext";
 import { motion } from "framer-motion";
 import ProductCard from "../General/ProductCard";
 import { useAPI } from "../../contexts/APIContext";
+import {DotLottieReact} from "@lottiefiles/dotlottie-react";
 
 const Favorites = () => {
-  const { favorites } = useFavorites();
+  const { favorites, loading } = useFavorites();
   const { productos } = useAPI();
 
   const favoritosCompletos = favorites
   .map((fav) => productos.find((prod) => prod.id_producto === fav.id_producto))
   .filter((prod) => prod !== undefined);
 
+  if (loading) {
+    return (
+<div className="flex flex-col items-center justify-center p-6 bg-[#f9d0c5] rounded-lg shadow-lg ">
+  <DotLottieReact
+    src="https://lottie.host/235bc1d3-e7b0-4cf5-ac4c-7f1e605ecbcd/FuvISPEoeP.lottie"
+    loop
+    autoplay
+  />
+        <p className="text-3xl ">Cargando productos...</p>
+      </div>
+    );
+  }
+  
   if (!favorites || favorites.length === 0) {
     return (
       <div className="p-6 bg-[#f9d0c5] rounded-lg shadow-lg">

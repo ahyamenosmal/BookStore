@@ -20,7 +20,7 @@ const UserProfile = () => {
     { key: "datos", label: "Mis Datos" },
     { key: "compras", label: "Mis Compras" },
     { key: "favoritos", label: "Favoritos" },
-    { key: "Cerrar Sesión", label: "Cerrar Sesión" },
+   
   ];
 
   // Mapeo de sección a componente
@@ -28,7 +28,7 @@ const UserProfile = () => {
     datos: <PersonalDataForm user={user} />, 
     compras: <OrderHistory />,
     favoritos: <Favorites />,
-    "Cerrar Sesión": <LogoutButton />,
+    
   };
 
   return (

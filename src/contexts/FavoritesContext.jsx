@@ -7,6 +7,7 @@ export function FavoritesProvider({ children }) {
   const { user } = useAuth();
   const [favorites, setFavorites] = useState([]);
   const API_URL = import.meta.env.VITE_API_URL.replace(/\/$/, "");
+  const [loading, setLoading] = useState(true);
 
   // Verifica si hay usuario y carga los favoritos desde localStorage
   useEffect(() => {
@@ -111,6 +112,8 @@ export function FavoritesProvider({ children }) {
       setFavorites(data);
     } catch (error) {
       console.error("Error al obtener favoritos:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -162,7 +165,7 @@ export function FavoritesProvider({ children }) {
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, toggleFavorite, isFavorite, removeFavorite, clearFavorites, addFavorite, fetchFavorites }}
+      value={{ favorites, toggleFavorite, isFavorite, removeFavorite, clearFavorites, addFavorite, fetchFavorites, loading }}
     >
       {children}
     </FavoritesContext.Provider>

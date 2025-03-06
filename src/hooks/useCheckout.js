@@ -37,7 +37,7 @@ export const useCheckout = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/scripta-backend/v1/purchase`, {
+      const response = await fetch(`${API_URL}/scripta-backend/v1/purchase-history`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

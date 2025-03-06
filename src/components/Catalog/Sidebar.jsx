@@ -30,7 +30,7 @@ function Sidebar({
       />
 
       {/* Elementos */}
-      <div className="categories-wrapper flex flex-col space-y-8 mt-24  ">
+      <div className=" flex flex-col space-y-8 h-screen mt-32 ">
         
         {allText && (
           <motion.div
