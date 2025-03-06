@@ -14,12 +14,10 @@ function Catalog() {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-center ">
-          <DotLottieReact
-            src="https://lottie.host/42d01473-c6c8-4ae9-857f-a976ed0fd00d/O29QbCJ1BB.lottie"
-            loop
-            autoplay
-            style={{ width: 400, height: 400 }}
-          />
+        <DotLottieReact
+      src="https://lottie.host/b276c2ba-2eca-451d-928c-b0dfd3dfb293/ydZceKVTZ8.lottie"
+      loop
+      autoplay />
           <p className="text-3xl ">Cargando productos...</p>
         </div>
       </Layout>
