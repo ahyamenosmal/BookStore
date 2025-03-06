@@ -40,7 +40,7 @@ const CartItem = ({ producto }) => {
         </button>
         <button
           className="bg-neutral-50/75 text-red-700 px-3 py-1 rounded-md hover:bg-neutral-50 transition"
-          onClick={() => removeFromCart(producto.id)}
+          onClick={() => removeFromCart(producto.id_producto)}
         >
          <Minus size={20} strokeWidth={3} />
         </button>

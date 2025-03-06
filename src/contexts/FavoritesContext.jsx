@@ -36,15 +36,22 @@ export function FavoritesProvider({ children }) {
       alert("Debes estar logeado para añadir favoritos");
       return;
     }
-
+  
     const isFav = favorites.some((fav) => fav.id_producto === producto.id_producto);
     const token = localStorage.getItem("token");
-
+  
     if (isFav) {
-      // Si ya es favorito, eliminamos vía DELETE
+      // Buscar el favorito en la lista antes de eliminarlo
+      const favoritoExistente = favorites.find((fav) => fav.id_producto === producto.id_producto);
+      
+      if (!favoritoExistente || !favoritoExistente.id_favorito) {
+        console.error("No se encontró el ID del favorito a eliminar.");
+        return;
+      }
+  
       try {
         const response = await fetch(
-          `${API_URL}/scripta-backend/v1/favoritos/${favorites.id_favorito}`,
+          `${API_URL}/scripta-backend/v1/favoritos/${favoritoExistente.id_favorito}`,
           {
             method: "DELETE",
             headers: {
@@ -55,7 +62,7 @@ export function FavoritesProvider({ children }) {
         );
   
         if (response.ok) {
-          // Actualizamos el estado eliminando el producto
+          // Eliminar el producto de favoritos en el estado
           setFavorites((prevFavorites) =>
             prevFavorites.filter((fav) => fav.id_producto !== producto.id_producto)
           );
@@ -66,7 +73,7 @@ export function FavoritesProvider({ children }) {
         console.error("Error al eliminar favorito:", error);
       }
     } else {
-      // Si no es favorito, lo agregamos vía POST
+      // Agregar el favorito vía POST
       try {
         const response = await fetch(`${API_URL}/scripta-backend/v1/favoritos`, {
           method: "POST",

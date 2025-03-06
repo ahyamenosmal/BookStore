@@ -9,13 +9,13 @@ import { Navigate } from "react-router";
 function Cart() {
   const { cart, clearCart } = useCart();
   console.log("CartContext:", cart);
-  const { productos } = useAPI();
+  const { producto } = useAPI();
 
   return (
     <>
       
       <Layout>
-        <div className="grid grid-cols-3  mx-52 mt-5 pr-16 p-4 bg-[#f9d0c5] rounded-lg">
+        <div className="grid grid-cols-3 mx-4 md:mx-10 lg:mx-52 mt-5 pr-16 p-4 bg-[#f9d0c5] rounded-lg">
           <h1 className="text-5xl font-bold mb-10 col-span-1 col-start-2 text-center font-lathusca">
             Carrito de Compras
           </h1>
