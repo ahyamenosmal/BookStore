@@ -20,7 +20,7 @@ function Footer() {
               <ul className=" font-medium">
                 <li className="mb-2 ">
                   <a
-                    href="#"
+                    href="/404"
                     className="hover:underline flex flex-row"
                   >
                    <svg className="w-[30px] h-[30px] text-white pr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/404"
                     className="hover:underline flex flex-row"
                   >
                     <svg className="w-[30px] h-[30px] text-white pr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -50,12 +50,12 @@ function Footer() {
               </h2>
               <ul className=" font-medium">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">
+                  <a href="/404" className="hover:underline">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <a href="/404" className="hover:underline">
                     Terms &amp; Conditions
                   </a>
                 </li>

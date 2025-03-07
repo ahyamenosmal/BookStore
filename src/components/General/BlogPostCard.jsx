@@ -12,7 +12,7 @@ const BlogPostCard = ({ post }) => {
       <h3 className="text-lg font-semibold mt-2">{post.titulo}</h3>
       <p className="text-sm text-gray-600">Por {post.autor} - {post.fecha}</p>
       <p className="text-gray-700 mt-2">{post.contenido.substring(0, 100)}...</p>
-      <button className="mt-3 text-blue-600 hover:underline">Leer más</button>
+      <a href="/404" className="mt-3 text-blue-600 hover:underline ">Leer más</a>
 </div>
     
 </div>

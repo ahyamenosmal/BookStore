@@ -11,7 +11,7 @@ const ChangeForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center  overflow-hidden">
+    <div className="flex flex-col items-center overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={isLogin ? "login" : "register"}
@@ -19,22 +19,19 @@ const ChangeForm = () => {
           animate={{ x: 0, rotateY: 0, opacity: 1 }}
           exit={{ x: isLogin ? 400 : -400, rotateY: -90, opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className=" relative"
+          className="relative"
         >
-          {isLogin ? <LoginForm /> : <RegisterForm />}
+          {isLogin ? (
+            <LoginForm toggleForm={toggleForm} />
+          ) : (
+            <RegisterForm toggleForm={toggleForm} />
+          )}
         </motion.div>
       </AnimatePresence>
 
-      <button
-        onClick={toggleForm}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        {isLogin ? "Ir a Registro" : "Ir a Iniciar Sesión"}
-      </button>
+
     </div>
   );
 };
 
 export default ChangeForm;
-
-
