@@ -34,12 +34,13 @@ const ProductCard = ({ producto }) => {
           className={`w-6 h-6 ${isFav ? "text-red-500 fill-red-500" : ""}`}
         />
       </button>
-
+      <Link to={`/producto/${producto.id_producto}`}>
       <div className="col-start-2 mt-2 pr-8 overflow-hidden">
         <h5 className="text-center text-lg font-semibold tracking-tighter text-gray-900  break-words whitespace-normal leading-tight">
           {producto.nombre}
         </h5>
       </div>
+        </Link>
 
       <div className="col-start-1 ml-8 mt-6">
         <span className="text-xl font-bold text-gray-900 ">

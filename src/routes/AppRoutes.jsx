@@ -9,6 +9,7 @@ import ProductView from "../views/Client/ProductView.jsx";
 import AdminDashboard from '../components/Admin/AdminDashboard.jsx'
 import UserProfile from "../components/User/UserProfile.jsx";
 import CategoryManager from "../components/Admin/CategoryManager.jsx";
+import NotFoundPage from "../views/Client/NotFoundPage.jsx";
 
 
 
@@ -16,6 +17,7 @@ function AppRoutes() {
   return (
     <Routes>
       
+      <Route path='/404' element={<NotFoundPage />} />
       <Route path='/' element={<Home />} />
       <Route path='/catalog' element={<Catalog />} />
       <Route path='/cart' element={<Cart />} />
