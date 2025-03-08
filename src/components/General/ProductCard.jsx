@@ -35,14 +35,14 @@ const ProductCard = ({ producto }) => {
         />
       </button>
       <Link to={`/producto/${producto.id_producto}`}>
-      <div className="col-start-2 mt-2 pr-8 overflow-hidden">
+      <div className="col-start-2 mt-2 pr-6 overflow-hidden">
         <h5 className="text-center text-lg font-semibold tracking-tighter text-gray-900  break-words whitespace-normal leading-tight">
           {producto.nombre}
         </h5>
       </div>
         </Link>
 
-      <div className="col-start-1 ml-8 mt-6">
+      <div className="col-start-1 ml-12 mt-6">
         <span className="text-xl font-bold text-gray-900 ">
           {producto.precio.toLocaleString("es-CL", {
             style: "currency",

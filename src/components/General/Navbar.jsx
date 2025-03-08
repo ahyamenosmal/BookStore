@@ -107,6 +107,14 @@ function Navbar() {
                   >
                     <div className="absolute  mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg z-50">
                       <ul>
+                <li>
+                  <NavLink
+                    to="/404"
+                    className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-900 md:p-0"
+                  >
+                    Sobre nosotros
+                  </NavLink>
+                </li>
                         <li>
                           <NavLink
                             to="/profile"
@@ -151,14 +159,6 @@ function Navbar() {
                   Registro/Inicio de sesión
                 </NavLink>
               )}
-            </li>
-            <li>
-              <NavLink
-                to="/404"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-900 md:p-0"
-              >
-                Sobre nosotros
-              </NavLink>
             </li>
           </ul>
         </div>
