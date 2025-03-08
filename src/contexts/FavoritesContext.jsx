@@ -9,13 +9,13 @@ export function FavoritesProvider({ children }) {
   const API_URL = import.meta.env.VITE_API_URL.replace(/\/$/, "");
   const [loading, setLoading] = useState(true);
 
-  // Verifica si hay usuario y carga los favoritos desde localStorage
+  // Verifica si hay usuario y carga los favoritos desde backend
   useEffect(() => {
     if (user) {
-      const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      setFavorites(storedFavorites);
+     fetchFavorites();
     } else {
       setFavorites([]);
+      setLoading(false);
     }
   }, [user]);
 
@@ -97,7 +97,7 @@ export function FavoritesProvider({ children }) {
     }
   };
 
-  // Función para obtener favoritos del backend (si se requiere persistencia)
+  // Función para obtener favoritos del backend 
   const fetchFavorites = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -110,6 +110,7 @@ export function FavoritesProvider({ children }) {
       });
       const data = await response.json();
       setFavorites(data);
+      console.log("fav", data)
     } catch (error) {
       console.error("Error al obtener favoritos:", error);
     } finally {
@@ -117,7 +118,7 @@ export function FavoritesProvider({ children }) {
     }
   };
 
-  // Función para agregar un favorito al backend (si se requiere persistencia)
+  // Función para agregar un favorito al backend 
   const addFavorite = async (product) => {
     try {
       const token = localStorage.getItem("token");

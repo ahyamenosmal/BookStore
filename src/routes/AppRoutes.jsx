@@ -10,6 +10,7 @@ import AdminDashboard from '../components/Admin/AdminDashboard.jsx'
 import UserProfile from "../components/User/UserProfile.jsx";
 import CategoryManager from "../components/Admin/CategoryManager.jsx";
 import NotFoundPage from "../views/Client/NotFoundPage.jsx";
+import LoginAdmin from "../components/Admin/LoginAdmin.jsx";
 
 
 
@@ -24,6 +25,7 @@ function AppRoutes() {
       <Route path='/login' element={<Login />} />
       <Route path='/profile' element={<UserProfile />} />
       <Route path="/producto/:id" element={<ProductView />} /> 
+      <Route path='/loginadmin' element={<LoginAdmin />} />
       <Route path='/admin' element={<AdminDashboard />}>
         <Route path='categories' element={<CategoryManager />} />
         <Route path='products' element={<AdminDashboard />} />

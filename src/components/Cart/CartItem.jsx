@@ -4,16 +4,19 @@ import { Plus, Minus } from "lucide-react";
 const CartItem = ({ producto }) => {
   const { addToCart, removeFromCart } = useCart();
 
+  
   return (
     <div className="flex items-center justify-between border p-4 rounded-lg shadow-md bg-red-400/50">
       <div className="flex items-center space-x-4">
         <img
           src={producto.imagen}
-          alt={producto.titulo}
+          alt={producto.nombre}
           className="w-16 h-32 object-cover rounded-lg"
         />
         <div>
-          <h2 className="text-lg font-semibold">{producto.titulo}</h2>
+          <h2 className="text-lg font-semibold">{producto.nombre}</h2>
+
+
           <p className="text-gray-600">
             Precio unitario:{" "}
             {producto.precio.toLocaleString("es-CL", {

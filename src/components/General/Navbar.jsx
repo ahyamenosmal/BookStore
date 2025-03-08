@@ -116,6 +116,19 @@ function Navbar() {
                             Perfil
                           </NavLink>
                         </li>
+                        {user && user.isAdmin && (
+                    <li>
+                      <button
+                        onClick={() => {
+                          setDropdownOpen(false);
+                          navigate("/admin");
+                        }}
+                        className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center"
+                      >
+                        Dashboard Admin
+                      </button>
+                    </li>
+                  )}
                         <li>
                           <button
                             onClick={handleLogout}
