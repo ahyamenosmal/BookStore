@@ -57,7 +57,32 @@ export default class APIService {
         }
       }
       
-
+      
+     async fetchHistorial(user) {
+          if (!user) return [];
+          try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(
+              `${this.API_URL}/scripta-backend/v1/purchase-history/${user.info.id_usuario}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+            if (!response.ok) {
+              throw new Error("Error al obtener el historial de compras");
+            }
+            return await response.json();
+          } catch (error) {
+            console.error("Error obteniendo el historial de compras:", error.message);
+            return [];
+          }
+        };
+    
+    
 
   }
   

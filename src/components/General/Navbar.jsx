@@ -71,6 +71,81 @@ function Navbar() {
                 Catálogo
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to=""
+                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-900 md:p-0"
+              >
+                Nosotros
+              </NavLink>
+            </li>
+            <li>
+              {user ? (
+                <div className="relative">
+                  {/* Icono de perfil */}
+                  <button
+                    onClick={handleDropdownToggle}
+                    className="flex items-center focus:outline-none"
+                  >
+                    <UserRound strokeWidth={1.5} className=" text-gray-900" />
+                  </button>
+                  {/* Dropdown */}
+                  <AnimatePresence>
+                    {dropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        
+                      >
+                        <div style={{ clipPath: "polygon(0 14%, 80% 14%, 88% 0, 95% 14%, 100% 14%, 100% 100%, 0 100%)" }} className="absolute -left-32  w-40 bg-white border border-gray-200 rounded-xl shadow-lg z-50">
+                          <ul>
+                            <li>
+                              <NavLink
+                                to="/profile"
+                                className="block px-4 py-2 mt-4 text-gray-700 hover:bg-gray-100"
+                                onClick={() => setDropdownOpen(false)}
+                              >
+                                Perfil
+                              </NavLink>
+                            </li>
+                            {user && user.isAdmin && (
+                              <li>
+                                <button
+                                  onClick={() => {
+                                    setDropdownOpen(false);
+                                    navigate("/admin");
+                                  }}
+                                  className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center"
+                                >
+                                  Dashboard Admin
+                                </button>
+                              </li>
+                            )}
+                            <li>
+                              <button
+                                onClick={handleLogout}
+                                className="w-full  text-red-700 text-left px-2 py-2  hover:bg-gray-100 flex items-center"
+                              >
+                                <LogOut className=" mr-2" /> Cerrar sesión
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <NavLink
+                  to="/login"
+                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-900 md:p-0"
+                >
+                  Registro/Inicio de sesión
+                </NavLink>
+              )}
+            </li>
             <li className="relative">
               <NavLink
                 to="/cart"
@@ -83,82 +158,6 @@ function Navbar() {
                   </span>
                 )}
               </NavLink>
-            </li>
-            <li>
-              {user ? (
-                <div className="relative">
-                  {/* Icono de perfil */}
-                  <button
-                    onClick={handleDropdownToggle}
-                    className="flex items-center focus:outline-none"
-                  >
-                    <UserRound  strokeWidth={1.5} className=" text-gray-900" />
-                    
-                  </button>
-                  {/* Dropdown */}
-                  <AnimatePresence>
-                  {dropdownOpen && (
-                    <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    
-                  >
-                    <div className="absolute  mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg z-50">
-                      <ul>
-                <li>
-                  <NavLink
-                    to="/404"
-                    className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-900 md:p-0"
-                  >
-                    Sobre nosotros
-                  </NavLink>
-                </li>
-                        <li>
-                          <NavLink
-                            to="/profile"
-                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                            onClick={() => setDropdownOpen(false)}
-                            >
-                            Perfil
-                          </NavLink>
-                        </li>
-                        {user && user.isAdmin && (
-                    <li>
-                      <button
-                        onClick={() => {
-                          setDropdownOpen(false);
-                          navigate("/admin");
-                        }}
-                        className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center"
-                      >
-                        Dashboard Admin
-                      </button>
-                    </li>
-                  )}
-                        <li>
-                          <button
-                            onClick={handleLogout}
-                            className="w-full  text-red-700 text-left px-2 py-2  hover:bg-gray-100 flex items-center"
-                            >
-                            <LogOut className=" mr-2" /> Cerrar sesión
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                    </motion.div>
-                  )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <NavLink
-                  to="/login"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-900 md:p-0"
-                >
-                  Registro/Inicio de sesión
-                </NavLink>
-              )}
             </li>
           </ul>
         </div>

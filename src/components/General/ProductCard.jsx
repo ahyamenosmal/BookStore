@@ -4,6 +4,7 @@ import { useCart } from "../../contexts/CartContext";
 import { useFavorites } from "../../contexts/FavoritesContext"; // <-- Asegúrate de que existe
 import { Heart } from "lucide-react";
 
+
 const ProductCard = ({ producto }) => {
   const { addToCart } = useCart();
   const { toggleFavorite, favorites } = useFavorites(); // <-- Hook del FavoritesContext

@@ -41,9 +41,8 @@ function LoginForm() {
   };  
 
   return (
-    <div className="flex flex-row gap-32">
-
-    <div className="w-full  max-w-sm px-4  rounded-lg shadow-sm sm:p-6 md:p-8 bg-[#f9d0c5] border-zinc-800/30 border-2 border-solid box-shadow-md ">
+    <div className="flex flex-row  w-screen h-screen  justify-center ">
+    <div className="w-full max-w-sm h-full  max-h-fit px-4 self-center rounded-lg shadow-sm sm:p-6 md:p-8 Layout bg-[#f9d0c5] border-zinc-800/30 border-2 border-solid box-shadow-md ">
       <form className="space-y-6" onSubmit={handleSubmit}>
         <h5 className="text-2xl   font-bold  text-red-500  rounded-xl">
           Inicia sesión 

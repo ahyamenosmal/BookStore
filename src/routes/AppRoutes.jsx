@@ -18,7 +18,7 @@ function AppRoutes() {
   return (
     <Routes>
       
-      <Route path='/404' element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundPage />} />
       <Route path='/' element={<Home />} />
       <Route path='/catalog' element={<Catalog />} />
       <Route path='/cart' element={<Cart />} />
