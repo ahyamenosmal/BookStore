@@ -4,21 +4,21 @@ import Layout from "../../components/General/Layout.jsx";
 import Sidebar from "../../components/Catalog/Sidebar.jsx";
 import PaginatedProducts from "../../components/General/PaginatedProdutcs.jsx";
 import { useAPI } from "../../contexts/APIContext";
-import {DotLottieReact} from "@lottiefiles/dotlottie-react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 function Catalog() {
-  const { productos, categorias } = useAPI();
+  const { productos, categorias, loading } = useAPI();
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
 
-  if (!productos || productos.length === 0) {
+  if (loading) {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-center ">
-        <DotLottieReact
-      src="https://lottie.host/b276c2ba-2eca-451d-928c-b0dfd3dfb293/ydZceKVTZ8.lottie"
-      loop
-      autoplay />
-          <p className="text-3xl ">Cargando productos...</p>
+          <DotLottieReact
+            src="https://lottie.host/8459b19d-b6a3-4e22-babe-a880f96f4a89/WendwEEy87.lottie"
+            loop
+            autoplay
+          />
         </div>
       </Layout>
     );

@@ -27,7 +27,7 @@ const Home = () => {
             <h1 className="backdrop-blur-lg bg-white/25 rounded-lg text-star text-5xl font-lathusca m-5 px-5  border-red-400 border-0 border-b-4 border-solid w-fit">
               Best Sellers del momento
             </h1>
-            <PaginatedProducts products={productos} productsPerPage={3} />
+            <PaginatedProducts products={productos} productsPerPage={3} showPagination={false} randomize={true} />
           </div>
           </AnimatedSection>
 
@@ -36,7 +36,7 @@ const Home = () => {
             <h1 className="backdrop-blur-lg bg-white/25 rounded-lg  text-star text-5xl font-lathusca m-5 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
               Novedades
             </h1>
-            <PaginatedProducts products={productos} productsPerPage={6} />
+            <PaginatedProducts products={productos} productsPerPage={6} showPagination={false} randomize={true}/>
           </div>
           </AnimatedSection>
 
@@ -46,7 +46,7 @@ const Home = () => {
             <h1 className="backdrop-blur-lg bg-white/25 rounded-lg  text-star text-5xl font-lathusca m-5 px-5 border-red-400 border-0 border-b-4 border-solid w-fit">
               Ofertas unicas
             </h1>
-            <PaginatedProducts products={productos} productsPerPage={6} />
+            <PaginatedProducts products={productos} productsPerPage={6} showPagination={false} randomize={true}/>
           </div>
           </AnimatedSection>
 

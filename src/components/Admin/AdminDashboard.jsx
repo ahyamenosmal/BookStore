@@ -1,46 +1,45 @@
 // src/components/Admin/AdminDashboard.jsx
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import CategoryManager from "./CategoryManager";
+
 
 const AdminDashboard = () => {
+  const categoryClass = () =>
+    `hover:bg-sky-950 h-32 w-full place-content-center pl-4 transition-colors `;
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#f9f0df]">
+    <div className="min-h-screen flex flex-col bg-[#f9f0df] ">
       {/* Header */}
-      <header className="bg-blue-800 text-white p-6">
+      <header className="bg-gray-900 text-white p-6 shadow-xl border-b-2  border-gray-800">
         <h1 className="text-3xl font-bold">Panel de Administración</h1>
       </header>
-      <div className="flex flex-1">
+      <div className="flex flex-1 h-screen Layout">
         {/* Sidebar */}
-        <aside className="w-1/4 bg-gray-100 p-6 border-r border-gray-300">
-          <nav className="flex flex-col space-y-4">
+        <aside className="w-1/6 bg-sky-900 min-h-screen  py-48 border-r text-white font-semibold text-xl  border-gray-300  shadow-2xl">
+          <nav className="flex flex-col  ">
             <Link
               to="/admin/products"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className={categoryClass()}
             >
               Gestión de Productos
             </Link>
             <Link
-              to="/admin/orders"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Gestión de Órdenes
-            </Link>
-            <Link
               to="/admin/categories"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
+              className={categoryClass()}
             >
               Gestión de Categorías
+            </Link>
+            <Link
+              to="/admin/orders"
+              className={categoryClass()}
+            >
+              Gestión de Órdenes
             </Link>
           </nav>
         </aside>
         {/* Contenido principal */}
         <main className="flex-1 p-8">
-          <h2 className="text-2xl font-bold mb-4">Dashboard de Administración</h2>
-          <p className="text-gray-600">
-            Bienvenido al panel de administración. Desde aquí puedes gestionar
-            productos, órdenes y categorías.
-          </p>
+
           <Outlet />
         </main>
       </div>

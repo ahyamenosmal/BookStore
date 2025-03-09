@@ -7,7 +7,7 @@ function Footer() {
       <div className="mx-auto w-full max-w-screen-xl text-white p-4 py-6 lg:py-8 mt-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a href="/" className="flex items-center">
+            <a href="h" className="flex items-center">
               <img src={ScripaWhite} className=" h-28 me-3" alt="FlowBite Logo" />
             </a>
           </div>
@@ -20,7 +20,7 @@ function Footer() {
               <ul className=" font-medium">
                 <li className="mb-2 ">
                   <a
-                    href="/404"
+                    href="s"
                     className="hover:underline flex flex-row"
                   >
                    <svg className="w-[30px] h-[30px] text-white pr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ function Footer() {
                 </li>
                 <li>
                   <a
-                    href="/404"
+                    href="j"
                     className="hover:underline flex flex-row"
                   >
                     <svg className="w-[30px] h-[30px] text-white pr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -50,12 +50,12 @@ function Footer() {
               </h2>
               <ul className=" font-medium">
                 <li className="mb-4">
-                  <a href="/404" className="hover:underline">
+                  <a href="h" className="hover:underline">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="/404" className="hover:underline">
+                  <a href="j" className="hover:underline">
                     Terms &amp; Conditions
                   </a>
                 </li>

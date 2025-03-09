@@ -1,114 +1,177 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useAPI } from "../../contexts/APIContext";
-import { useAuth } from "../../contexts/AuthContext";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-
-const CategoryManager = () => {
+const CategoryManagerTable = () => {
   const { categorias, addCategorias, updateCategorias, deleteCategorias } =
     useAPI();
-  const { user } = useAuth();
+  const [open, setOpen] = useState(false);
 
+  const toggleTable = () => setOpen((prev) => !prev);
 
-  const handleAddCategorias = (e) => {
-    e.preventDefault();
-    const newCategorias = {
-      nombre: "",
-      descripcion: "",
-
+  const handleAddCategoria = () => {
+    const newCategoria = {
+      nombre: "Nueva Categoría",
+      descripcion: "Descripción de la nueva categoría",
     };
-    addCategorias(newCategorias);
+    addCategorias(newCategoria);
   };
+  const EditableRow = ({ categorias }) => {
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedCategory, setEditedCategory] = useState(categorias);
 
-  const handleUpdateCategorias = (e, Categorias) => {
-    e.preventDefault();
-    const updatedCategorias = {
-      ...Categorias,
-      nombre: e.target.nombre.value,
-      descripcion: e.target.descripcion.value,
+    useEffect(() => {
+      setEditedCategory(categorias);
+    }, [categorias]);
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setEditedCategory((prev) => ({ ...prev, [name]: value }));
     };
-    updateCategorias(updatedCategorias);
-  };
 
-  const handleDeleteCategorias = (e, Categorias) => {
-    e.preventDefault();
-    deleteCategorias(Categorias.id);
-   
-  };
+    const handleSave = () => {
+      onUpdate(editedCategory);
+      setIsEditing(false);
+    };
 
-  return (
-    <div className="p-4">
-      <h2 className="text-2xl font-semibold">Administrador de Categorias</h2>
-      <div className="flex flex-col space-y-4">
-        {categorias.map((Categorias) => (
-          <div key={Categorias.id} className="flex flex-col space-y-2">
-            <div className="flex flex-row space-x-2">
-              <div className="flex flex-col">
-                <h3 className="text-xl font-semibold">{Categorias.nombre}</h3>
-                <p className="text-gray-700">{Categorias.descripcion}</p>
-              </div>
-            </div>
-            <div className="flex flex-row space-x-2">
+    const handleCancel = () => {
+      setEditedCategory(categorias);
+      setIsEditing(false);
+    };
+
+    return (
+      <tr className="bg-red-300 border-b border-red-500">
+        <td className="px-6 py-4 font-medium text-black whitespace-nowrap">
+          {isEditing ? (
+            <input
+              type="text"
+              name="nombre"
+              value={editedCategory.nombre}
+              onChange={handleChange}
+              className="border rounded p-1"
+            />
+          ) : (
+            categorias.nombre
+          )}
+        </td>
+        <td className="px-6 py-4">
+          {isEditing ? (
+            <input
+              type="text"
+              name="descripcion"
+              value={editedCategory.descripcion}
+              onChange={handleChange}
+              className="border rounded p-1 w-full"
+            />
+          ) : (
+            categorias.descripcion || "Sin descripción"
+          )}
+        </td>
+        <td className="px-6 py-4 space-x-4">
+          {isEditing ? (
+            <>
               <button
-                onClick={(e) => handleUpdateCategorias(e, Categorias)}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={handleSave}
+                className="font-medium text-green-600 hover:underline"
+              >
+                Guardar
+              </button>
+              <button
+                onClick={handleCancel}
+                className="font-medium text-red-600 hover:underline"
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => setIsEditing(true)}
+                className="font-medium text-lime-700 p-2 hover:ring-lime-700 hover:ring-2 hover:bg-lime-700/25 rounded-lg"
               >
                 Editar
               </button>
               <button
-                onClick={(e) => handleDeleteCategorias(e, Categorias)}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      `¿Seguro que deseas eliminar la categoría "${categorias.nombre}"?`
+                    )
+                  ) {
+                    deleteCategorias(categorias.id_categoria);
+                  }
+                }}
+                className="font-medium text-red-800 p-2 hover:ring-red-700 hover:ring-2 hover:bg-red-700/25 rounded-lg"
               >
                 Eliminar
               </button>
-            </div>
-          </div>
-        ))}
-        <div className="flex flex-col space-y-2">
-          <h3 className="text-xl font-semibold">Agregar nueva categoría</h3>
-          <form onSubmit={handleAddCategorias}>
-            <div className="flex flex-col space-y-2">
-              <label htmlFor="nombre" className="text-gray-700">
-                Nombre
-              </label>
-              <input
-                type="text"
-                name="nombre"
-                id="nombre"
-                className="border border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-            <div className="flex flex-col space-y-2">
-              <label htmlFor="descripcion" className="text-gray-700">
-                Descripción
-              </label>
-              <textarea
-                name="descripcion"
-                id="descripcion"
-                className="border border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-            <div className="flex flex-col space-y-2">
-              <label htmlFor="imagen" className="text-gray-700">
-                Imagen
-              </label>
-              <input
-                type="text"
-                name="imagen"
-                id="imagen"
-                className="border border-gray-300 rounded p-2 w-full"
-              />
-            </div>
+            </>
+          )}
+        </td>
+      </tr>
+    );
+  };
+
+  return (
+    <div className="mx-10 my-5">
+      <h2 className="text-3xl font-bold text-center">
+        Administrador de Categorías
+      </h2>
+      <div className=" relative overflow-x-auto shadow-md rounded-lg mt-10 mx-10">
+      <table className="w-full  min-h-fit text-md text-left text-black rounded-lg">
+        <thead className="relative text-md text-black uppercase bg-red-400">
+          <tr>
+            <th scope="col" className="px-6 py-3">
+              Nombre de la Categoría
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Descripción
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Acciones
+            </th>
             <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={toggleTable}
+              className="absolute right-6 top-2 flex justify-center text-white font-bold "
             >
-              Agregar
+              
+              {open ? <ChevronUp strokeWidth={4} size={32} /> : <ChevronDown size={32} strokeWidth={4} />}
             </button>
-          </form>
-        </div>
+          </tr>
+        </thead>
+
+        <AnimatePresence>
+          {open && (
+            <motion.tbody
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mt-4 overflow-hidden"
+            >
+              {categorias.map((categorias) => (
+                <EditableRow
+                  key={categorias.id_categoria}
+                  categorias={categorias}
+                />
+              ))}
+            </motion.tbody>
+          )}
+        </AnimatePresence>
+      </table>
+     </div>
+      <div className="mt-4">
+        <button
+          onClick={handleAddCategoria}
+          className="justify-end mx-10 px-4 py-2 bg-green-500 hover:bg-green-700 text-white font-bold rounded transition-colors"
+        >
+          Agregar nueva categoría
+        </button>
       </div>
     </div>
   );
 };
 
-export default CategoryManager;
+
+export default CategoryManagerTable;
