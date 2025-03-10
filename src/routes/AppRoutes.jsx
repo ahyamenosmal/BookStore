@@ -11,7 +11,7 @@ import UserProfile from "../components/User/UserProfile.jsx";
 import CategoryManager from "../components/Admin/CategoryManager.jsx";
 import NotFoundPage from "../views/Client/NotFoundPage.jsx";
 import LoginAdmin from "../components/Admin/LoginAdmin.jsx";
-
+import ProductManager from "../components/Admin/ProductManager.jsx";
 
 
 function AppRoutes() {
@@ -28,7 +28,7 @@ function AppRoutes() {
       <Route path='/loginadmin' element={<LoginAdmin />} />
       <Route path='/admin' element={<AdminDashboard />}>
         <Route path='categories' element={<CategoryManager />} />
-        <Route path='products' element={<AdminDashboard />} />
+        <Route path='products' element={<ProductManager />} />
         <Route path='orders' element={<AdminDashboard />} />
       </Route>
     </Routes>

@@ -87,8 +87,8 @@ function RegisterForm({ toggleForm }) {
               onChange={handleChange}
               required
             />
-            {errors.nombre && (
-              <p className="text-red-500 text-sm">{errors.name}</p>
+            {newErrors.nombre && (
+              <p className="text-red-500 text-sm">{newErrors.name}</p>
             )}
           </div>
 
@@ -110,8 +110,8 @@ function RegisterForm({ toggleForm }) {
               onChange={handleChange}
               required
             />
-            {errors.correo_electronico && (
-              <p className="text-red-500 text-sm">{errors.email}</p>
+            { newErrors.correo_electronico && (
+              <p className="text-red-500 text-sm">{newErrors.email}</p>
             )}
           </div>
 
@@ -133,8 +133,8 @@ function RegisterForm({ toggleForm }) {
               onChange={handleChange}
               required
             />
-            {errors.contraseña && (
-              <p className="text-red-500 text-sm">{errors.password}</p>
+            {newErrors.contraseña && (
+              <p className="text-red-500 text-sm">{newErrors.password}</p>
             )}
           </div>
 
@@ -156,8 +156,8 @@ function RegisterForm({ toggleForm }) {
               onChange={handleChange}
               required
             />
-            {errors.telefono && (
-              <p className="text-red-500 text-sm">{errors.phone}</p>
+            {newErrors.telefono && (
+              <p className="text-red-500 text-sm">{newErrors.phone}</p>
             )}
           </div>
 
@@ -179,8 +179,8 @@ function RegisterForm({ toggleForm }) {
               onChange={handleChange}
               required
             />
-            {errors.direccion && (
-              <p className="text-red-500 text-sm">{errors.address}</p>
+            {newErrors.direccion && (
+              <p className="text-red-500 text-sm">{newErrors.address}</p>
             )}
           </div>
 

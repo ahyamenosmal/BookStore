@@ -48,9 +48,34 @@ useEffect(() => {
   fetchUserHistorial();
   }, [user]);
 
+  const updateProductos = async (updatedProducto) => {
+    try {
+      
+      const result = await apiService.updateProduct(
+        updatedProducto.id_producto,
+        updatedProducto.nombre,
+        updatedProducto.autor,
+        updatedProducto.descripcion,
+        updatedProducto.precio,
+        updatedProducto.stock,
+        updatedProducto.imagen,
+        updatedProducto.id_categoria
+      );
+      // Actualizar el estado local de productos
+      setProductos((prevProductos) =>
+        prevProductos.map((prod) =>
+          prod.id_producto === result.id_producto ? result : prod
+        )
+      );
+      return result;
+    } catch (error) {
+      console.error("Error updating product:", error);
+      throw error;
+    }
+  };
 
   return (
-    <APIContext.Provider value={{ categorias, productos, historial, loading, loadingHistorial, apiService }}>
+    <APIContext.Provider value={{ categorias, productos, historial, loading, loadingHistorial, apiService, updateProductos }}>
       {children}
     </APIContext.Provider>
   );

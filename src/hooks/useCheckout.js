@@ -9,7 +9,7 @@ export const useCheckout = () => {
 
   const checkout = async () => {
     if (!user) {
-      console.error("No hay usuario autenticado");
+      alert("Debes estar logeado para realizar la compra");
       return;
     }
     if (cart.length === 0) {
@@ -46,6 +46,7 @@ export const useCheckout = () => {
         body: JSON.stringify(payload),
       });
 
+      
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Error al registrar la compra");
