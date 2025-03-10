@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAPI } from "../../contexts/APIContext";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import ProductForm from "./ProductForm";
 
 const ProductManagerTable = () => {
   const { productos, addProductos, updateProductos, deleteProductos } =
     useAPI();
   const [open, setOpen] = useState(false);
+  const [showForm , setShowForm] = useState(false);
 
   const toggleTable = () => setOpen((prev) => !prev);
+  const toggleForm = () => setShowForm((prev) => !prev);
 
   const handleAddProducto = () => {
     const newProducto = {
@@ -240,13 +243,26 @@ const ProductManagerTable = () => {
           </AnimatePresence>
         </table>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 w-full flex flex-col">
         <button
-          onClick={handleAddProducto}
-          className="justify-end mx-10 px-4 py-2 bg-green-500 hover:bg-green-700 text-white font-bold rounded transition-colors"
+          onClick={toggleForm}
+          className=" ring-2 ring-green-700 px-4 py-2 drop-shadow-md bg-green-500 hover:bg-green-700 text-white font-bold rounded transition-colors"
         >
           Agregar nuevo producto
         </button>
+        <AnimatePresence>
+          {showForm && (
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.3 }}
+              className="mt-4 overflow-hidden"
+            >
+              <ProductForm />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

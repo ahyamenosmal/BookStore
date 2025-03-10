@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAPI } from "../../contexts/APIContext";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import CategoryForm from "./CategoryForm";
 
 const CategoryManagerTable = () => {
   const { categorias, addCategorias, updateCategorias, deleteCategorias } =
     useAPI();
   const [open, setOpen] = useState(false);
+  const [showForm , setShowForm] = useState(false);
 
   const toggleTable = () => setOpen((prev) => !prev);
+  const toggleForm = () => setShowForm((prev) => !prev);
 
   const handleAddCategoria = () => {
     const newCategoria = {
@@ -28,10 +31,11 @@ const CategoryManagerTable = () => {
     const handleChange = (e) => {
       const { name, value } = e.target;
       setEditedCategory((prev) => ({ ...prev, [name]: value }));
+      console.log(editedCategory);
     };
 
     const handleSave = () => {
-      onUpdate(editedCategory);
+      updateCategorias(editedCategory);
       setIsEditing(false);
     };
 
@@ -161,13 +165,26 @@ const CategoryManagerTable = () => {
         </AnimatePresence>
       </table>
      </div>
-      <div className="mt-4">
+     <div className="mt-4 w-full flex flex-col px-10">
         <button
-          onClick={handleAddCategoria}
-          className="justify-end mx-10 px-4 py-2 bg-green-500 hover:bg-green-700 text-white font-bold rounded transition-colors"
+          onClick={toggleForm}
+          className=" ring-2 ring-green-700 px-4 py-2 drop-shadow-md bg-green-500 hover:bg-green-700 text-white font-bold rounded transition-colors"
         >
           Agregar nueva categoría
         </button>
+        <AnimatePresence>
+          {showForm && (
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.3 }}
+              className="mt-4 overflow-hidden"
+            >
+              <CategoryForm />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
