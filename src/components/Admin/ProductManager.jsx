@@ -5,7 +5,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import ProductForm from "./ProductForm";
 
 const ProductManagerTable = () => {
-  const { productos, addProductos, updateProductos, deleteProductos } =
+  const { productos, addProductos, updateProductos, deleteProductos, categorias } =
     useAPI();
   const [open, setOpen] = useState(false);
   const [showForm , setShowForm] = useState(false);
@@ -77,6 +77,7 @@ const ProductManagerTable = () => {
             productos.autor || "Sin descripción"
           )}
         </td>
+
         <td className="px-6 py-4">
           {isEditing ? (
             <textarea
@@ -90,6 +91,29 @@ const ProductManagerTable = () => {
           )}
         </td>
         <td className="px-6 py-4">
+  {isEditing ? (
+    <select
+      name="id_categoria"
+      value={editedProducto.id_categoria}
+      onChange={handleChange}
+      className="border rounded p-2"
+    >
+      {categorias && categorias.length > 0 ? (
+        categorias.map((categoria) => (
+          <option key={categoria.id_categoria} value={categoria.id_categoria}>
+            {categoria.nombre}
+          </option>
+        ))
+      ) : (
+        <option disabled>Cargando categorías...</option>
+      )}
+    </select>
+  ) : (
+    // 🔹 Mostramos el nombre de la categoría en lugar del ID
+    categorias.find((c) => c.id_categoria === productos.id_categoria)?.nombre || "Categoría no encontrada"
+  )}
+</td>
+        <td className="px-4 py-4">
           {isEditing ? (
             <input
               type="number"
@@ -105,7 +129,7 @@ const ProductManagerTable = () => {
             })
           )}
         </td>
-        <td className="px-6 py-4">
+        <td className="px-4 py-4">
           {isEditing ? (
             <input
               type="number"
@@ -197,6 +221,9 @@ const ProductManagerTable = () => {
               </th>
               <th scope="col" className="px-2 py-3">
                 Descripcion
+              </th>
+              <th scope="col" className="px-2 py-3">
+                Categoria
               </th>
               <th scope="col" className="px-2 py-3">
                 Precio
