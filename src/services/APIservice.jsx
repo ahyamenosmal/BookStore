@@ -82,12 +82,18 @@ export default class APIService {
           }
         };
 
-      async updateProduct(id, nombre, autor, descripcion, precio, stock, imagen, id_categoria) {
+      async updateProduct(id_producto, nombre, autor, descripcion, precio, stock, imagen, id_categoria) {
+       
   try {
-    const response = await fetch(`${this.API_URL}/scripta-backend/v1/products/${id}`, {
+    const token = localStorage.getItem("token");
+if (!token) {throw new Error("No hay token disponible");
+}
+
+    const response = await fetch(`${this.API_URL}/scripta-backend/v1/products/${id_producto}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ nombre, autor, descripcion, precio, stock, imagen, id_categoria })
     });
@@ -101,6 +107,30 @@ export default class APIService {
     throw error;
   }
 }
+
+  async deleteProduct(id_producto) {
+    
+    try {
+      const token = localStorage.getItem("token");
+if (!token) {throw new Error("No hay token disponible");
+    }
+
+      const response = await fetch(`${this.API_URL}/scripta-backend/v1/products/${id_producto}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Error al eliminar el producto");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+      throw error;
+    } 
+    }
 
   }
   

@@ -34,8 +34,8 @@ function RegisterForm({ toggleForm }) {
   };
 
   // Validación de los campos antes del envío
+  let newErrors = {};
   const validateForm = () => {
-    let newErrors = {};
     if (!form.nombre.trim()) newErrors.nombre = "El nombre es obligatorio.";
     if (!form.correo_electronico.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
       newErrors.correo_electronico = "Correo inválido.";
@@ -134,7 +134,7 @@ function RegisterForm({ toggleForm }) {
               required
             />
             {newErrors.contraseña && (
-              <p className="text-red-500 text-sm">{newErrors.password}</p>
+              <p className="text-red-500 text-sm">{newErrors.contraseña}</p>
             )}
           </div>
 

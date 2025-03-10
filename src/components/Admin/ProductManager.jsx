@@ -163,7 +163,7 @@ const ProductManagerTable = () => {
                       `¿Seguro que deseas eliminar el producto "${productos.nombre}"?`
                     )
                   ) {
-                    deleteProductos(productos.id_productos);
+                    deleteProductos(productos.id_producto);
                   }
                 }}
                 className="font-medium text-red-800 p-2 hover:ring-red-700 hover:ring-2 hover:bg-red-700/25 rounded-lg"

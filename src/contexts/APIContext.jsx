@@ -74,8 +74,21 @@ useEffect(() => {
     }
   };
 
+  const deleteProductos = async (id_producto) => {
+    try {
+      const result = await apiService.deleteProduct(id_producto);
+      setProductos((prevProductos) =>
+        prevProductos.filter((prod) => prod.id_producto !== id_producto)
+      );
+      return result;
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      throw error;
+    }
+  };
+
   return (
-    <APIContext.Provider value={{ categorias, productos, historial, loading, loadingHistorial, apiService, updateProductos }}>
+    <APIContext.Provider value={{ categorias, productos, historial, loading, loadingHistorial, apiService, updateProductos, deleteProductos }}>
       {children}
     </APIContext.Provider>
   );
