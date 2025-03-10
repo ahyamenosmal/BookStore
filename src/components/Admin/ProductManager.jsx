@@ -10,82 +10,146 @@ const ProductManagerTable = () => {
 
   const toggleTable = () => setOpen((prev) => !prev);
 
-  const handleAddCategoria = () => {
-    const newCategoria = {
-      nombre: "Nueva Categoría",
-      descripcion: "Descripción de la nueva categoría",
+  const handleAddProducto = () => {
+    const newProducto = {
+      nombre: "Nuevo Producto",
+      autor: "Autor del libro",
+      precio: 0,
+      stock: 0,
+      imagen: "https://via.placeholder.com/150",
+      descripcion: "Descripción del nuevo producto",
+      id_categoria: null,
     };
-    addCategorias(newCategoria);
+    addProductos(newProducto);
   };
-  const EditableRow = ({ categorias }) => {
+
+  const EditableRow = ({ productos }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [editedCategory, setEditedCategory] = useState(categorias);
+    const [editedProducto, setEditedProducto] = useState(productos);
 
     useEffect(() => {
-      setEditedCategory(categorias);
-    }, [categorias]);
+      setEditedProducto(productos);
+    }, [productos]);
 
     const handleChange = (e) => {
       const { name, value } = e.target;
-      setEditedCategory((prev) => ({ ...prev, [name]: value }));
+      setEditedProducto((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSave = () => {
-      onUpdate(editedCategory);
+      updateProductos(editedProducto);
       setIsEditing(false);
     };
 
     const handleCancel = () => {
-      setEditedCategory(categorias);
+      setEditedProducto(productos);
       setIsEditing(false);
     };
 
     return (
-      <tr className="bg-red-300 border-b border-red-500">
-        <td className="px-6 py-4 font-medium text-black whitespace-nowrap">
+      <tr className="bg-red-300 border-b border-red-500 h-32">
+        <td className="pl-6 py-4 font-medium text-black ">
           {isEditing ? (
             <input
               type="text"
               name="nombre"
-              value={editedCategory.nombre}
+              value={editedProducto.nombre}
               onChange={handleChange}
               className="border rounded p-1"
             />
           ) : (
-            categorias.nombre
+            productos.nombre
           )}
         </td>
         <td className="px-6 py-4">
           {isEditing ? (
             <input
               type="text"
-              name="descripcion"
-              value={editedCategory.descripcion}
+              name="autor"
+              value={editedProducto.autor}
               onChange={handleChange}
               className="border rounded p-1 w-full"
             />
           ) : (
-            categorias.descripcion || "Sin descripción"
+            productos.autor || "Sin descripción"
+          )}
+        </td>
+        <td className="px-6 py-4">
+          {isEditing ? (
+            <textarea
+              name="descripcion"
+              value={editedProducto.descripcion}
+              onChange={handleChange}
+              className="border rounded p-1 max-h-24 min-h-12 w-full  whitespace-break-spaces"
+            />
+          ) : (
+            productos.descripcion || "Sin descripción"
+          )}
+        </td>
+        <td className="px-6 py-4">
+          {isEditing ? (
+            <input
+              type="number"
+              name="precio"
+              value={editedProducto.precio}
+              onChange={handleChange}
+              className="border rounded p-1 w-full"
+            />
+          ) : (
+            Number(productos.precio).toLocaleString("es-CL", {
+              style: "currency",
+              currency: "CLP",
+            })
+          )}
+        </td>
+        <td className="px-6 py-4">
+          {isEditing ? (
+            <input
+              type="number"
+              name="stock"
+              value={editedProducto.stock}
+              onChange={handleChange}
+              className="border rounded p-1 w-full"
+            />
+          ) : (
+            productos.stock || "no stock"
+          )}
+        </td>
+        <td className="px-6 py-4">
+          {isEditing ? (
+            <input
+              type="text"
+              name="imagen"
+              value={editedProducto.imagen}
+              onChange={handleChange}
+              className="border rounded p-1"
+            />
+          ) : (
+            <img
+              src={productos.imagen}
+              alt={productos.nombre}
+              className="w-12 h-12 object-cover rounded"
+            />
           )}
         </td>
         <td className="px-6 py-4 space-x-4">
           {isEditing ? (
-            <>
+            <div className="flex flex-col ">
               <button
                 onClick={handleSave}
-                className="font-medium text-green-600 hover:underline"
+                className="font-medium text-lime-700 p-2 hover:ring-lime-700 hover:ring-2 hover:bg-lime-700/25 rounded-lg"
               >
                 Guardar
               </button>
               <button
                 onClick={handleCancel}
-                className="font-medium text-red-600 hover:underline"
+                className="font-medium text-red-800 p-2 hover:ring-red-700 hover:ring-2 hover:bg-red-700/25 rounded-lg"
               >
                 Cancelar
               </button>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="flex flex-col">
               <button
                 onClick={() => setIsEditing(true)}
                 className="font-medium text-lime-700 p-2 hover:ring-lime-700 hover:ring-2 hover:bg-lime-700/25 rounded-lg"
@@ -96,17 +160,17 @@ const ProductManagerTable = () => {
                 onClick={() => {
                   if (
                     window.confirm(
-                      `¿Seguro que deseas eliminar la categoría "${categorias.nombre}"?`
+                      `¿Seguro que deseas eliminar el producto "${productos.nombre}"?`
                     )
                   ) {
-                    deleteCategorias(categorias.id_categoria);
+                    deleteProductos(productos.id_productos);
                   }
                 }}
                 className="font-medium text-red-800 p-2 hover:ring-red-700 hover:ring-2 hover:bg-red-700/25 rounded-lg"
               >
                 Eliminar
               </button>
-            </>
+            </div>
           )}
         </td>
       </tr>
@@ -114,31 +178,43 @@ const ProductManagerTable = () => {
   };
 
   return (
-    <div className="mx-10 my-5">
+    <div className="mx-8 my-5">
       <h2 className="text-3xl font-bold text-center">
-        Administrador de Categorías
+        Administrador de Productos
       </h2>
-      <div className=" relative overflow-x-auto shadow-md rounded-lg mt-10 mx-10">
-        <table className="w-full  min-h-fit text-md text-left text-black rounded-lg">
+      <div className=" relative overflow-x-auto shadow-md rounded-lg mt-10 ">
+        <table className="w-full text-md  text-black">
           <thead className="relative text-md text-black uppercase bg-red-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
-                Nombre de la Categoría
+              <th scope="col" className="pl-6 py-3">
+                Nombre del Producto
+              </th>
+              <th scope="col" className="px-2 py-3">
+                Autor
+              </th>
+              <th scope="col" className="px-2 py-3">
+                Descripcion
+              </th>
+              <th scope="col" className="px-2 py-3">
+                Precio
+              </th>
+              <th scope="col" className="px-2 py-3">
+                Stock
               </th>
               <th scope="col" className="px-6 py-3">
-                Descripción
+                Imagen
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-12 py-3">
                 Acciones
               </th>
               <button
                 onClick={toggleTable}
-                className="absolute right-6 top-2 flex justify-center text-white font-bold "
+                className="absolute right-1 top-2 flex  text-white font-bold "
               >
                 {open ? (
-                  <ChevronUp strokeWidth={4} size={32} />
+                  <ChevronUp strokeWidth={4} size={30} />
                 ) : (
-                  <ChevronDown size={32} strokeWidth={4} />
+                  <ChevronDown size={30} strokeWidth={4} />
                 )}
               </button>
             </tr>
@@ -153,10 +229,10 @@ const ProductManagerTable = () => {
                 transition={{ duration: 0.3 }}
                 className="mt-4 overflow-hidden"
               >
-                {categorias.map((categorias) => (
+                {productos.map((productos) => (
                   <EditableRow
-                    key={categorias.id_categoria}
-                    categorias={categorias}
+                    key={productos.id_productos}
+                    productos={productos}
                   />
                 ))}
               </motion.tbody>
@@ -166,14 +242,14 @@ const ProductManagerTable = () => {
       </div>
       <div className="mt-4">
         <button
-          onClick={handleAddCategoria}
+          onClick={handleAddProducto}
           className="justify-end mx-10 px-4 py-2 bg-green-500 hover:bg-green-700 text-white font-bold rounded transition-colors"
         >
-          Agregar nueva categoría
+          Agregar nuevo producto
         </button>
       </div>
     </div>
   );
 };
 
-export default CategoryManagerTable;
+export default ProductManagerTable;

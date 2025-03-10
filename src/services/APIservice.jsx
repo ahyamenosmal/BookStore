@@ -81,8 +81,26 @@ export default class APIService {
             return [];
           }
         };
-    
-    
+
+      async updateProduct(id, nombre, autor, descripcion, precio, stock, imagen, id_categoria) {
+  try {
+    const response = await fetch(`${this.API_URL}/scripta-backend/v1/products/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ nombre, autor, descripcion, precio, stock, imagen, id_categoria })
+    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error("Error al actualizar el producto: " + errorText);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error in updateProduct:", error);
+    throw error;
+  }
+}
 
   }
   
