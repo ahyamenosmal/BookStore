@@ -10,6 +10,7 @@ export const APIProvider = ({ children }) => {
   const [historial, setHistorial] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingHistorial, setLoadingHistorial] = useState(true);
+  const [addProducto] = useState(null);
 
 
   const apiService = new APIService();
@@ -87,8 +88,65 @@ useEffect(() => {
     }
   };
 
+  const addProductos = async (newProduct) => {
+    try {
+      console.log("Agregando producto:", newProduct);
+
+      const result = await apiService.addProducto(newProduct);
+      setProductos((prevProductos) => [...prevProductos, result]);
+      return result;
+    } catch (error) {
+      console.error("Error al agregar producto:", error);
+      throw error;
+    }
+  };
+
+
+  const updateCategorias = async (updatedCategoria) => {
+    try {
+      const result = await apiService.updateCategorias(
+      updatedCategoria.id_categoria,
+      updatedCategoria.nombre,
+      updatedCategoria.descripcion
+      );
+
+      setCategorias((prevCategorias) =>
+        prevCategorias.map((cat) =>
+          cat.id_categoria === result.id_categoria ? result : cat
+        )
+      );
+      return result;
+    } catch (error) {
+      console.error("Error updating categorias:", error);
+      throw error;
+    }
+  };
+
+  const deleteCategorias = async (id_categoria) => {
+    try {
+      const result = await apiService.deleteCategorias(id_categoria);
+      setCategorias((prevCategorias) =>
+        prevCategorias.filter((cat) => cat.id_categoria !== id_categoria)
+      );
+      return result;
+    } catch (error) {
+      console.error("Error deleting categorias:", error); 
+    }
+  };
+
+  const addCategoria = async (newCategory) => {
+    try {
+      const result = await apiService.addCategory(newCategory);
+      setCategorias((prevCategorias) => [...prevCategorias, result]);
+      return result;
+    } catch (error) {
+      console.error("Error en addCategoria:", error);
+      throw error;
+    }
+  };
+
   return (
-    <APIContext.Provider value={{ categorias, productos, historial, loading, loadingHistorial, apiService, updateProductos, deleteProductos }}>
+    <APIContext.Provider value={{ categorias, productos, historial, loading, loadingHistorial, apiService, addProductos, updateProductos, deleteProductos, updateCategorias, deleteCategorias, addCategoria }}>
       {children}
     </APIContext.Provider>
   );
